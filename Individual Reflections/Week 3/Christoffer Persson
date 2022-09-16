@@ -1,0 +1,39 @@
+What do I want to learn or understand better?
+
+The division of responsibilities during the sprint was made quite simple due to the planning we put in beforehand during the planning meetings. While we may have 
+been slow to choose which user stories should be completed during the sprint once we made the goal was clear. It helped quite a bit by collectively discussing what
+priority should be placed on each user story based on dependencies and working towards our MVP. The effort estimation was also quite helpful in estimating how much
+effort the team had assigned to a task. It not only gave it context but I also felt quite content in knowing what level of effort and therefore quality
+was expected of me. Next sprint I would like further cement our work pipeline from planning, developing and completing user stories. While the week went well 
+there was some uncertainty in exactly how the workflow was supposed work. This week we came up with a structure that worked and I would like for us to stick to
+that structure until we see issues with it. I feel that this will lead to us being more comfortable in our resposibilities during the sprint since we can predict 
+what and when things are expected of us.
+
+
+How can I help someone else, or the entire team, to learn something new?
+
+From an organizational point of view I and the team have been flexible in solving the issues arising from working on the project. This has been valuable 
+in moving the project along however due to unforseen circumstances the buffer to the deadline was shortened. While this was not an issue during the week
+it is worth to keep this experience in mind in order to actively minimize stress and increase efficiency. As the designated PO for the project I would like to
+be helpful to the team in their mission to be better at working in groups concerning multiple people working on modules independently. 
+More specifically I would like to scrutinize and discuss acceptance criteria in the next sprint such that possible missteps arising from them lacking
+are minimized or solved. 
+
+
+What is my contribution towards the team’s use of Scrum?
+
+Our use of scrum has been working seemingly well. I have been vocal in raising concerns when I find that there are any or questions or solutions if I have any.
+Next week I am the scrum master and would like to hold efficient meetings and handle the team members issues if there are any. Solving issues will require 
+me to be proactive in finding and tackling those issues and listening to the team when they are voiced. Efficient meetings should be handled by me having some idea
+of a plan for each meeting and communicating this itinerery to the team once in session. Team members should also be able to add to the itinerary if they find 
+I have missed an important point.
+ 
+
+What is my contribution towards the team’s deliveries?
+
+I have been active in both discussing and developing the deliverables. As a team we have confirmed an overall structure for the timeline of each sprint which will
+probably be more and more helpful and understood given iterations. For the project I developed the list system and basic structure. Implementation with the 
+website went smoothly and now that we have a functioning core website more user stories can be worked on in parallel. Next week I would like to develop how 
+to use the vehicle database we have received to fill this list with real cars and hopefully sort them according to our criteria if the team estimates that there 
+is enough time to complete this within the next sprint. Researching and brushing up on json deserializing and sorting algorithms to be used on the website 
+is therefore something I have to do next sprint.
