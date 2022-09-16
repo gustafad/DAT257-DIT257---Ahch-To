@@ -1,0 +1,104 @@
+﻿@model IEnumerable<CarCompare.Models.vehicle>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="headerField">
+
+    <h1>HeaderField</h1>
+    <p>Info how to use the website.</p>
+</div>
+
+
+<div class="filterField">
+    <div>
+        <button class="filterButton"> Filtrera!</button>
+        <h1>FilterField</h1>
+        <p>The area where the user could filter as he/she wants.</p>
+    </div>
+</div>
+
+<div class="resultField">
+    <h1>ResultField</h1>
+    <p>Here, we are getting the result from sorting the result.</p>
+    <table class="table">
+
+
+        @foreach (var item in Model)
+        {
+            <tr class="entry">
+                <td width="10px">
+                    <img src="@Html.DisplayFor(modelItem => item.Image)">
+                </td>
+                <td>
+                    <strong>@Html.DisplayFor(modelItem => item.Model)</strong>
+                    <br>
+                    Year: @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td align="right">
+                    <br />
+                    <strong>@Html.DisplayFor(modelItem => item.Carbon_Emissions)</strong>
+                </td>
+                <td align="right" width="10px">
+
+                    <a class="button1" href="http://www.google.com/" target="_blank" rel="noopener noreferrer">
+                        <button class="button1">More Information</button>
+                    </a>
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+<style>
+    .filterButton {
+        padding: 0.25vw 2vw 0.25vw;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 400;
+        color: white;
+        background-color: darkolivegreen;
+        border-radius: 10vw;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        margin-left: 50vw;
+        margin-top: 25vw;
+        position: absolute;
+    }
+
+    .filterButton:hover {
+        background-color: #23c483;
+        box-shadow: 0px 0.12vw 0.5vw rgba(46, 229, 157, 0.4);
+        color: green;
+        transform: translateY(-7px);
+    }
+
+    .filterButton:active {
+        transform: translateY(-1px);
+    }
+
+
+    .filterField {
+        background-color: gray;
+        width: 62.5vw;
+        height: 30vw;
+    }
+
+    .resultField {
+        background-color: silver;
+        width: 62.5vw;
+        min-height: 10vw;
+    }
+
+
+    .headerField {
+        background-color: saddlebrown;
+        width: 62.5vw;
+        height: 10vw;
+        margin-top: 4vw;
+    }
+</style>
