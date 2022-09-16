@@ -1,0 +1,39 @@
+Team Reflection Week 3
+
+All topics will not be covered during each team reflection. A selection between the four topics will be made and developed each week leading to us completing each topic two times by the end of the team reflections. 
+The choice will be made by choosing the most interesting and relevant topics and the week's experiences in the other topics will be saved for next week’s retrospective leading to hopefully more informative reflections. 
+
+
+--Social Contract and Effort
+Your social contract (Links to an external site.) (Links to an external site.), i.e., 
+the rules that define how you work together as a team, how it influenced your work, 
+and how it evolved during the project (this means, of course, you should create one in the first week and continuously update it when the need arrives)
+There is a survey (Links to an external site.) you can use for evaluating how the team is perceiving the process and if it is used by several teams it will also help you to assess'
+if your team is following a general pattern or not.
+
+The social contract and the communication within our team has worked well. No issues have arised due to all team members clearly communicating availability and status. Uncertainties within the project have been resolved after communication and everyone has taken an active part within the group. 
+The project and its development timeline seems quite clear to the team which has led to us being comfortable working on the project. 
+In the future we should keep trying to uphold this level of commitment and communication by learning from this week's efforts and upholding it. 
+
+--The time you have spent on the course and how it relates to what you delivered (so keep track of your hours so you can describe the current situation)
+We believe this has worked quite well, though there are some inconsistencies with when we all have time to work together. However, this has not as of yet deemed any sort of significant problems or complications. If any complications arise, then all of our members shall communicate what we should do to improve the situation. During the week we implemented our user stories into a standardized format on trello which led to us not being able to choose stories on monday like planned. This was resolved by wednesday and the following sprints the plan is to choose all user stories during mondays planning meeting.  
+
+
+--Design decisions and product structure
+-How your design decisions (e.g., choice of APIs, architecture patterns, behavior) support customer value
+
+The API we used contains valuable information for our climate concerned customers. Things like which standard was used to calculate emissions and how much emissions are produced. The key concept of the website is to provide information about environmentally friendly cars and information about these things are therefore core to the customers value. At the moment little of the API is being used however the structure has been researched. 
+From our overview of the API before being actively used we thought that it was more than it was; however in essence it is just a database of vehicles and their specifications. In the future when we implement the database fully into our site we should be able to provide information to the customer for a large assortment of vehicles. 
+During the next sprint we will implement the information provided to us into our own websites list of vehicles which will give customers their most valued  overview over environmentally friendly cars.
+The website itself is supposed to be designed in such a way that no fluff should get between the customer and their desired information. This week we completed the basic structure of the website. Real information is lacking and design needs to be improved, however a good structure providing the list of vehicles at the front and center now exists which is the core of our website and perceived customer value. Design will be improved upon in the coming weeks and user stories aimed to do so are already planned.
+
+--Which technical documentation you use and why (e.g. use cases, interaction diagrams, class diagrams, domain models or component diagrams, text documents)
+At the moment we only use the mockup as our technical documentation for how our product should look and function. Paired with the context of our defined MVP in the project scope we find that this is enough at the moment to complete the project. If a tricky part of the project is discovered and this is needed to fully comprehend our desired solution we will reevaluate our stance at that moment. Text documents containing our DoD, social contract and each user story's acceptance criteria should be continually developed and used. If issues arise with these documents information they will be altered to reflect our new approach.
+
+
+--How you use and update your documentation throughout the sprints
+Well, currently we are in a situation where we have not done any documentation thus we are only in the first week (A). In the future, how we want it to be is really simple. Everyone should make documentation for their own part of the project before committing in Github (B). As a group, we decided to make it an usual part of our work every time someone commits their work in GitHub(A->B). If any particular code part is difficult to understand, we should make documentation in the code as well. 
+
+--How you ensure code quality and enforce coding standards
+Currently, we have only started and not much quantity of code has been made but as it looks now, the quality is more than acceptable(A). There are some unoptimized areas, such as css being in the index.html file, or a whole temporary list is in the controller. But this we wish to change while we develop further(B). By using the MVC model standard, we are enforced to use that structure, and a lot of the code quality follows along quite nicely by correctly applying MVC. Communication if someone thinks your code is not of sufficient quality is also enforced(A->B)
+
