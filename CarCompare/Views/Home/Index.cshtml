@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<CarCompare.Models.vehicle>
 @{
     ViewBag.Title = "Home Page";
+    CarCompare.ViewModels.CarDataVM cdVM = ViewBag.CarData;
 }
 
 <div class="headerField">
@@ -15,6 +16,7 @@
         <button class="filterButton"> Filtrera!</button>
         <h1>FilterField</h1>
         <p>The area where the user could filter as he/she wants.</p>
+        @Html.Partial("Partials/_CarDataPV", cdVM)
     </div>
 </div>
 
@@ -51,7 +53,6 @@
 
     </table>
 </div>
-
 
 <style>
     .filterButton {

@@ -1,7 +1,10 @@
 ﻿using CarCompare.Models;
+using CarCompare.Services;
+using CarCompare.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -64,10 +67,12 @@ namespace CarCompare.Controllers
 
         };
 
-        public ActionResult Index()
+       
+
+        public async Task<ActionResult> Index()
         {
-            
-            return View(vehicleList);
+            ViewBag.CarData = new CarDataVM(await CarDataService.CarData());
+            return View();
         }
 
         public ActionResult About()
