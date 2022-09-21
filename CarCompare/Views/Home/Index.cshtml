@@ -3,28 +3,53 @@
     ViewBag.Title = "Home Page";
 }
 
+<!--Link to stylesheet-->
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 
+    <style>
+        .filterDrop {
+            display: inline-block;
+            cursor: pointer;
+        }
 
-<div class="headerField">
+        .bar1, .bar2, .bar3 {
+            width: 35px;
+            height: 5px;
+            background-color: #333;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
 
-    <h1>HeaderField</h1>
-    <p>Info how to use the website.</p>
-</div>
+        .change .bar1 {
+            transform: translate(0, 11px) rotate(-45deg);
+        }
 
+        .change .bar2 {
+            opacity: 0;
+        }
 
-<div class="filterField">
-    <div>
-        <button class="filterButton"> Filtrera!</button>
-        <h1>FilterField</h1>
-        <p>The area where the user could filter as he/she wants.</p>
+        .change .bar3 {
+            transform: translate(0, -11px) rotate(45deg);
+        }
+    </style>
+</head>
+
+<div class="field filter">
+    <div class="filterDrop" onclick="myFunction(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
     </div>
 </div>
 
-<div class="resultField">
-    <h1>ResultField</h1>
-    <p>Here, we are getting the result from sorting the result.</p>
-    <table class="table">
+<script>
+    function myFunction(x) {
+        x.classList.toggle("change");
+</script>
 
+<div class="field result">
+    <table class="table">
 
         @foreach (var item in Model)
         {
@@ -53,54 +78,3 @@
 
     </table>
 </div>
-
-
-<style>
-    .filterButton {
-        padding: 0.25vw 2vw 0.25vw;
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 2.5px;
-        font-weight: 400;
-        color: white;
-        background-color: darkolivegreen;
-        border-radius: 10vw;
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease 0s;
-        margin-left: 50vw;
-        margin-top: 25vw;
-        position: absolute;
-    }
-
-    .filterButton:hover {
-        background-color: #23c483;
-        box-shadow: 0px 0.12vw 0.5vw rgba(46, 229, 157, 0.4);
-        color: green;
-        transform: translateY(-7px);
-    }
-
-    .filterButton:active {
-        transform: translateY(-1px);
-    }
-
-
-    .filterField {
-        background-color: gray;
-        width: 62.5vw;
-        height: 30vw;
-    }
-
-    .resultField {
-        background-color: silver;
-        width: 62.5vw;
-        min-height: 10vw;
-    }
-
-
-    .headerField {
-        background-color: saddlebrown;
-        width: 62.5vw;
-        height: 10vw;
-        margin-top: 4vw;
-    }
-</style>

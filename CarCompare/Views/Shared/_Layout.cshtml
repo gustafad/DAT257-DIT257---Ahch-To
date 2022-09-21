@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom:5.7vw; background-color:darkolivegreen">
+    <div class="navbar navbar-inverse navbar-fixed-top header" style="margin-bottom:5.7vw; background-color:darkolivegreen">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -16,15 +16,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="~/Content/images/LogoTransparent.png" alt="Logo" style="height:6vw"/>
+                <img src="~/Content/images/LogoTransparent.png" alt="Logo" style="height:8vw"/>
                 @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Information", "Information", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <ul class="nav navbar-nav menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home", null, new {style="color: lightgray;"})</li>
+                    <li>@Html.ActionLink("Information", "Information", "Home", null, new {style= "color: lightgray" })</li>
+                    <li>@Html.ActionLink("About", "About", "Home", null, new { style = "color: lightgray" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { style = "color: lightgray" })</li>
                 </ul>
             </div>
         </div>
