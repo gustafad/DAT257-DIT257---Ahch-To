@@ -1,12 +1,9 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
+﻿/* Set padding to keep content from hitting the edges */
 .body-content {
+    padding-top: 60px;
     padding-left: 15px;
     padding-right: 15px;
+    padding-bottom: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -41,4 +38,22 @@ table tr:nth-child(even) td {
 
 table tr:nth-child(odd) td {
     background-color: #ffffff
+}
+
+.aboutField {
+    background-color: darkolivegreen;
+    font-size: 18px;
+    border: 1px solid black;
+    margin-inline: 4vw;
+    padding-inline: 3vw;
+    padding-block-end: 1vw;
+}
+
+.informationField {
+    background-color: darkolivegreen;
+    font-size: 18px;
+    border: 1px solid black;
+    margin: 4vw;
+    padding-inline: 3vw;
+    padding-block-end: 1vw;
 }
