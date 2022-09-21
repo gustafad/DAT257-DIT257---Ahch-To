@@ -21,11 +21,20 @@ namespace CarCompare.ViewModels
                 return "Model is: " + _cd.brand[0].name;
             }
         }
-        public string id
+        public string modelYear
         {
             get
             {
-                return "Id is: " + _cd.brand[0].id;
+                return "Id is: " + _cd.brand[0].models[0].generations[0].modelYear;
+            }
+        }
+
+        public string co2
+        {
+            get
+            {
+                //if (_cd.brand[0].models[0].generations[0].modifications[0].Items.Contains("co2"))
+                    return "Id is: " + _cd.brand[0].models[0].generations[0].modifications[0];
             }
         }
 

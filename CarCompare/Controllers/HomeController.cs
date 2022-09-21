@@ -69,9 +69,9 @@ namespace CarCompare.Controllers
 
        
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            ViewBag.CarData = new CarDataVM(await CarDataService.CarData());
+            ViewBag.CarData = new CarDataVM(CarDataService.CarData());
             return View();
         }
 

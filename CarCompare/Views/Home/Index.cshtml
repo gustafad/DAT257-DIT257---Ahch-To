@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CarCompare.Models.vehicle>
+﻿@*@model IEnumerable<CarCompare.Models.CarDataDTO>*@
 @{
     ViewBag.Title = "Home Page";
     CarCompare.ViewModels.CarDataVM cdVM = ViewBag.CarData;
@@ -16,7 +16,11 @@
         <button class="filterButton"> Filtrera!</button>
         <h1>FilterField</h1>
         <p>The area where the user could filter as he/she wants.</p>
-        @Html.Partial("Partials/_CarDataPV", cdVM)
+        @for (int i = 0; i < 5; i++)
+        {
+            @Html.Partial("Partials/_CarDataPV", cdVM)
+        }
+
     </div>
 </div>
 
@@ -25,7 +29,7 @@
     <p>Here, we are getting the result from sorting the result.</p>
     <table class="table">
 
-
+       @*
         @foreach (var item in Model)
         {
             <tr class="entry">
@@ -49,7 +53,7 @@
                 </td>
 
             </tr>
-        }
+        }*@
 
     </table>
 </div>
