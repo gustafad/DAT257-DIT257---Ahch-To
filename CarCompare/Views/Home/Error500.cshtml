@@ -1,0 +1,37 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "500";
+}
+<div class="informationField">
+    <center>
+        @if (HttpContext.Current.IsDebuggingEnabled)
+        {
+
+
+            <h1>Ah shit, here we 500 again</h1><br />
+        }
+        else
+        {
+            <h1>Oops 500!</h1><br />
+        }
+
+
+    </center>
+
+    <h4>
+        Hello! Something went wrong with our servers. Kindly return and try again
+    </h4>
+</div>
+<style>
+    .informationField {
+        color: white;
+        background-color: darkolivegreen;
+        font-size: 18px;
+        border: 1px solid black;
+        margin: 4vw;
+        padding-inline: 3vw;
+        padding-block-end: 1vw;
+        border-radius: 5vw;
+        box-shadow: 0.25vw 0.5vw;
+    }
+</style>
