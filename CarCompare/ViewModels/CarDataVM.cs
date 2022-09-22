@@ -40,3 +40,4 @@ namespace CarCompare.ViewModels
 
     }
 }
+
