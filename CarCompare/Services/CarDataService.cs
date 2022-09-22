@@ -12,28 +12,10 @@ namespace CarCompare.Services
 {
     public class CarDataService
     {
-        /*      public static CarDataDTO CarData()
-              {
-
-              String jsonData = File.ReadAllText("C:/Users/adamt/source/repos/DAT257-DIT257---Ahch-To/CarCompare/dataJSON.json");
-                  //String jsonData = "hej";
-                  if (jsonData != null)
-                  {
-                      CarDataDTO cd = null;
-                      cd = JsonConvert.DeserializeObject<CarDataDTO>(jsonData);
-                      return cd;
-                  }
-                  else
-                  {
-                      return null;
-                  }
-
-              }*/
-
         public static CarDataDTO CarData()
         {
-
-            String XMLData = File.ReadAllText("C:/Users/adamt/source/repos/DAT257-DIT257---Ahch-To/CarCompare/data.xml");
+            string LocalPath = HttpContext.Current.Server.MapPath(@"~/data.xml");
+            String XMLData = File.ReadAllText(LocalPath);
             if (XMLData != null)
             {
                 CarDataDTO cd = null;
@@ -44,7 +26,6 @@ namespace CarCompare.Services
                     cd = (CarDataDTO)serializer.Deserialize(reader);
                 }
 
-                
                 return cd;
             }
             else
