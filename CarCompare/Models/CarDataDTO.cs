@@ -397,6 +397,21 @@ namespace CarCompare.Models
 
         private object[] itemsField;
 
+/*        private decimal acceleration;
+        private decimal acceleration200;
+        private decimal acceleration300;
+        private decimal acceleration60;
+        private string allElectricRange;
+        private decimal allElectricRangeMax;
+        private decimal allElectricRangeMin;
+        private string averageEnergyConsumption;
+        private decimal averageEnergyConsumptionMax;
+        private decimal averageEnergyConsumptionMin;
+        private decimal batteryCapacity;
+        private string brand;
+        private string co2;*/
+
+
         private ItemsChoiceType[] itemsElementNameField;
 
         /// <remarks/>
