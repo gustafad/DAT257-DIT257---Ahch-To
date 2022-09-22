@@ -7,15 +7,18 @@ using System.Xml.Serialization;
 namespace CarCompare.Models
 {
 
+    
+
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.auto-data.net/")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.auto-data.net/", IsNullable = false)]
-    
 
 
+    //This part is generated automatically by VisualStudio. Its job is to be a template for the data in the XML file so we can Deserialize it correctly into classes
+    // NOTE: The XML file had been altered to fit a more proper name, the version where CarDataDTO is named should be kept.
     public partial class CarDataDTO
     {
 
@@ -397,20 +400,6 @@ namespace CarCompare.Models
 
         private object[] itemsField;
 
-/*        private decimal acceleration;
-        private decimal acceleration200;
-        private decimal acceleration300;
-        private decimal acceleration60;
-        private string allElectricRange;
-        private decimal allElectricRangeMax;
-        private decimal allElectricRangeMin;
-        private string averageEnergyConsumption;
-        private decimal averageEnergyConsumptionMax;
-        private decimal averageEnergyConsumptionMin;
-        private decimal batteryCapacity;
-        private string brand;
-        private string co2;*/
-
 
         private ItemsChoiceType[] itemsElementNameField;
 
@@ -666,6 +655,5 @@ namespace CarCompare.Models
         /// <remarks/>
         yearstop,
     }
-
 
 }

@@ -125,7 +125,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CarDataDTO.cs" />
-    <Compile Include="Models\vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CarDataService.cs" />
     <Compile Include="ViewModels\CarDataVM.cs" />
@@ -165,7 +164,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Partials\_CarDataPV.cshtml" />
   </ItemGroup>
