@@ -2,12 +2,19 @@
     ViewBag.Title = "About";
 }
 
-<!--Link to stylesheet-->
-<head>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-</head>
 
-<div class="field">
+<div class="buttonfield">
+
+    <button  class="button">
+        <span class="actual-text">&nbsp;universe&nbsp;</span>
+        <span class="hover-text" aria-hidden="true">&nbsp;universe&nbsp;</span>
+    </button>
+    <p>Save the Universe --Hover over me! </p>
+
+</div>
+
+
+<div class="aboutField">
     <h1 style="padding-block-end: 1vw; color: black;">Why CarCompare?</h1>
     <p class="txtfield">
         Choosing which car to get is not an easy task, there are a lot to choose from,
@@ -23,7 +30,7 @@
     </p>
 </div>
 
-<div class="field">
+<div class="informationField">
     <h1 style="padding-block: 1vw; color:black;">Why are environmentally friendly cars important?</h1>
     <p class="txtfield">
         One of the major benefits of electric cars is the contribution they can make towards local
@@ -82,12 +89,92 @@
 
 </div>
 
-<div class="buttonfield">
+<style>
 
-    <button class="button">
-        <span class="actual-text">&nbsp;universe&nbsp;</span>
-        <span class="hover-text" aria-hidden="true">&nbsp;universe&nbsp;</span>
-    </button>
-    <p>Save the Universe --Hover over me! </p>
+    .aboutField {
+        background-color: darkolivegreen;
+        font-size: 18px;
+        border: 1px solid black;
+        margin-top: 1vw;
+        margin-inline: 4vw;
+        padding-inline: 3vw;
+        padding-block-end: 1vw;
+        border-radius: 5vw;
+        box-shadow: 0.25vw 0.5vw;
+    }
 
-</div>
+    .headerField {
+        background-color: darkolivegreen;
+        margin-top: 4vw;
+        margin-inline: 4vw;
+        padding-inline: 3vw;
+        padding-block-end: 1vw;
+    }
+
+    .informationField {
+        background-color: darkolivegreen;
+        font-size: 18px;
+        border: 1px solid black;
+        margin: 4vw;
+        padding-inline: 3vw;
+        padding-block-end: 1vw;
+        border-radius: 5vw;
+        box-shadow: 0.25vw 0.5vw;
+
+    }
+
+    .txtfield {
+        color: white;
+    }
+
+    .buttonfield {
+        font-size: 15px;
+        margin-top: 5vw;
+        margin-inline: 4vw;
+        padding-inline: 3vw;
+        padding-block-end: 1vw;
+        text-align:center;
+        
+      }
+
+    .button {
+        background: transparent;
+        border: none;
+    }
+
+    /* button styling */
+    .button {
+        --border-right: 6px;
+        --text-stroke-color: rgba(255,255,255,0.6);
+        --animation-color: #37FF8B;
+        --fs-size: 2em;
+        letter-spacing: 3px;
+        text-decoration: none;
+        font-size: var(--fs-size);
+        font-family: "Arial";
+        position: relative;
+        text-transform: uppercase;
+        color: darkolivegreen;
+        -webkit-text-stroke: 1px var(--text-stroke-color);
+    }
+    /* this is the text, when you hover on button */
+    .hover-text {
+        position: absolute;
+        box-sizing: border-box;
+        content: attr(data-text);
+        color: var(--animation-color);
+        width: 0%;
+        inset: 0;
+        border-right: var(--border-right) solid var(--animation-color);
+        overflow: hidden;
+        transition: 0.5s;
+        -webkit-text-stroke: 1px var(--animation-color);
+    }
+    /* hover */
+    .button:hover .hover-text {
+        width: 100%;
+        filter: drop-shadow(0 0 23px var(--animation-color))
+    }
+   
+    }
+</style>
