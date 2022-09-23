@@ -101,7 +101,7 @@ namespace CarCompare.ViewModels
         public string name { 
             get
             {
-                return _cd.brand[brandIndex].name;
+                return _cd.brand[brandIndex].name + " " + _cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].name;
             }
         }
         //Property for getting the model year of the current Vehicle
@@ -123,7 +123,7 @@ namespace CarCompare.ViewModels
                 {
                     if (Items[i].ToString() == "co2")
                     {
-                        return _cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].modifications[modificationIndex].Items[i].ToString();
+                        return _cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].modifications[modificationIndex].Items[i].ToString() + " co2 g/km";
                     }
                 }
 

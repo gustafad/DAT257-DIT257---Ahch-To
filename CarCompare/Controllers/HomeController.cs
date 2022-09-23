@@ -15,6 +15,7 @@ namespace CarCompare.Controllers
         //Index page (home page) has the actual data
         public ActionResult Index()
         {
+            //move this to static outside so it does not load everytime index is loaded
             ViewBag.CarData = new CarDataVM(CarDataService.CarData());
             if (ViewBag.CarData == null)
             {
