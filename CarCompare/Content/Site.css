@@ -1,13 +1,104 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/* Header field settings */
+.header {
+    padding-left: 50px;
+    border-block-end: 1.5px solid black;
+    box-shadow: 0.1vw 0.1vw;
+}
+
+/* Menu buttons */
+.menu {
+    padding-top: 2.7vw;
+    padding-left: 30px;
+    font-size: 25px;
+    font-weight: 500;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    padding-top: 8vw;
     padding-left: 15px;
     padding-right: 15px;
+    padding-bottom: 15px;
 }
+
+/* Site-wide field settings */
+.field {
+    background-color: darkolivegreen;
+    font-size: 18px;
+    border: 1px solid black;
+    margin: 1vw;
+    padding-inline: 3vw;
+    padding-block: 2vw;
+    border-radius: 0.3vw;
+    box-shadow: 0.2vw 0.2vw;
+}
+
+/* Filter field specific*/
+.filter {
+    background-color: #2c8574;
+    min-block-size: 15vw;
+}
+
+.filterDrop {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+/* Filter button*/
+.filterButton {
+    padding: 0.25vw 2vw 0.25vw;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 400;
+    color: white;
+    background-color: darkolivegreen;
+    border-radius: 10vw;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    position: center;
+}
+
+.filterButton:hover {
+    background-color: #23c483;
+    box-shadow: 0px 0.12vw 0.5vw rgba(46, 229, 157, 0.4);
+    color: green;
+    transform: translateY(-7px);
+
+}
+
+.filterButton:active {
+    transform: translateY(-1px);
+
+}
+
+/* Result field specifics*/
+.result {
+    background-color: darkolivegreen;
+    padding-inline: 1vw;
+    padding-block: 1vw;
+}
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -41,4 +132,56 @@ table tr:nth-child(even) td {
 
 table tr:nth-child(odd) td {
     background-color: #ffffff
+}
+
+.txtfield {
+    color: white;
+}
+
+.buttonfield {
+    font-size: 15px;
+    margin-top: 5vw;
+    margin-inline: 4vw;
+    padding-inline: 3vw;
+    padding-block-end: 1vw;
+    text-align: center;
+}
+
+.button {
+    background: transparent;
+    border: none;
+}
+
+/* button styling */
+.button {
+    --border-right: 6px;
+    --text-stroke-color: rgba(255,255,255,0.6);
+    --animation-color: #37FF8B;
+    --fs-size: 2em;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: "Arial";
+    position: relative;
+    text-transform: uppercase;
+    color: darkolivegreen;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+/* this is the text, when you hover on button */
+.hover-text {
+    position: absolute;
+    box-sizing: border-box;
+    content: attr(data-text);
+    color: var(--animation-color);
+    width: 0%;
+    inset: 0;
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    transition: 0.5s;
+    -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color))
 }

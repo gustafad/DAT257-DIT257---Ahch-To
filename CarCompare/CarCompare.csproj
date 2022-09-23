@@ -165,7 +165,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Home\Partials\_CarDataPV.cshtml" />
+=======
+    <Content Include="Views\Home\Information.cshtml" />
+>>>>>>> Tor
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
