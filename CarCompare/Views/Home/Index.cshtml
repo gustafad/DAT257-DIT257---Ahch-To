@@ -1,6 +1,8 @@
-﻿@model IEnumerable<CarCompare.Models.vehicle>
+﻿@*@model IEnumerable<CarCompare.Models.CarDataDTO>*@
+@model CarCompare.ViewModels.CarDataVM
 @{
     ViewBag.Title = "Home Page";
+    CarCompare.ViewModels.CarDataVM cdVM = ViewBag.CarData;
 }
 
 <div class="headerField">
@@ -10,7 +12,7 @@
 </div>
 
 
-<div class="filterField">
+<div class="filterField" style="">
     <div>
         <button class="filterButton"> Filtrera!</button>
         <h1>FilterField</h1>
@@ -20,38 +22,13 @@
 
 <div class="resultField">
     <h1>ResultField</h1>
-    <p>Here, we are getting the result from sorting the result.</p>
-    <table class="table">
+    <p>Here, we are getting the result from sorting the result.</p>    
+    @{
+        //Calles the partial view so index does not get cluttered
+        @Html.Partial("Partials/_CarDataPV", cdVM)
+    }
 
-
-        @foreach (var item in Model)
-        {
-            <tr class="entry">
-                <td width="10px">
-                    <img src="@Html.DisplayFor(modelItem => item.Image)">
-                </td>
-                <td>
-                    <strong>@Html.DisplayFor(modelItem => item.Model)</strong>
-                    <br>
-                    Year: @Html.DisplayFor(modelItem => item.Year)
-                </td>
-                <td align="right">
-                    <br />
-                    <strong>@Html.DisplayFor(modelItem => item.Carbon_Emissions)</strong>
-                </td>
-                <td align="right" width="10px">
-
-                    <a class="button1" href="http://www.google.com/" target="_blank" rel="noopener noreferrer">
-                        <button class="button1">More Information</button>
-                    </a>
-                </td>
-
-            </tr>
-        }
-
-    </table>
 </div>
-
 
 <style>
     .filterButton {
@@ -70,22 +47,22 @@
         position: absolute;
     }
 
-    .filterButton:hover {
-        background-color: #23c483;
-        box-shadow: 0px 0.12vw 0.5vw rgba(46, 229, 157, 0.4);
-        color: green;
-        transform: translateY(-7px);
-    }
+        .filterButton:hover {
+            background-color: #23c483;
+            box-shadow: 0px 0.12vw 0.5vw rgba(46, 229, 157, 0.4);
+            color: green;
+            transform: translateY(-7px);
+        }
 
-    .filterButton:active {
-        transform: translateY(-1px);
-    }
+        .filterButton:active {
+            transform: translateY(-1px);
+        }
 
 
     .filterField {
         background-color: gray;
         width: 62.5vw;
-        height: 30vw;
+        min-height: 30vw;
     }
 
     .resultField {

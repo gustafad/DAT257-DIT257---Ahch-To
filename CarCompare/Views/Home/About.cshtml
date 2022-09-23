@@ -1,7 +1,180 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+
+<div class="buttonfield">
+
+    <button  class="button">
+        <span class="actual-text">&nbsp;universe&nbsp;</span>
+        <span class="hover-text" aria-hidden="true">&nbsp;universe&nbsp;</span>
+    </button>
+    <p>Save the Universe --Hover over me! </p>
+
+</div>
+
+
+<div class="aboutField">
+    <h1 style="padding-block-end: 1vw; color: black;">Why CarCompare?</h1>
+    <p class="txtfield">
+        Choosing which car to get is not an easy task, there are a lot to choose from,
+        and they all come with various pros and cons. Also every person has different needs.
+        Maybe you live in a city, and just need to get to work and back home every day?
+        Maybe you have a large family and need space for the whole family?
+        Or maybe you love to drive and you’re looking for the quickest and coolest car?
+        <br>
+        We at CarCompare believe that, no matter what your needs are, the car you buy needs
+        to be environmentally friendly, so we made this webpage to help you decide what
+        environmentally friendly car is the right one for you.
+
+    </p>
+</div>
+
+<div class="informationField">
+    <h1 style="padding-block: 1vw; color:black;">Why are environmentally friendly cars important?</h1>
+    <p class="txtfield">
+        One of the major benefits of electric cars is the contribution they can make towards local
+        air quality. In heavily populated areas, such as towns and cities, air pollution is a real
+        problem. A pure electric car produces no carbon dioxide emissions while driving, making such
+        areas a cleaner and healthier place for pedestrians and cyclists. In over a year, just one
+        electric car on the roads can save an average of 1.5 million grams of CO2. That’s the
+        equivalent of four return flights from London to Barcelona.
+    </p>
+    <blockquote>
+        <i class="txtfield">
+            “The transport sector is the largest source of greenhouse gas emissions for many countries.
+            The biggest reason why is because of the conventional car, as vehicles account for over half
+            of the emissions from the transportation sector. Your typical car emits carbon dioxide and
+            many other harmful chemicals that are hurting the environment and human health.
+            This makes driving the right vehicle more important than ever.”
+        </i>
+        <a href="https://www.ecomena.org/why-eco-friendly-cars-are-important/">- ecomena.com</a>
+    </blockquote>
+    <br />
+    <hr />
+    <br />
+    <h1 style="padding-block: 1vw; color: black;">What about the production of electric vehicles?</h1>
+    <blockquote>
+        <i class="txtfield">
+            The emissions created during the production of an electric car tend to be higher than a
+            conventional car. This is due to the manufacture of lithium ion batteries which are an
+            essential part of an electric car. More than a third of the lifetime CO2 emissions from an
+            electric car come from the energy used to make the car itself. As technology advances, this
+            is changing for the better.
+            <br />
+            Reusing and recycling batteries is also a growing market. Research into the use of
+            second-hand batteries is looking at ways to reuse batteries in new technologies such as
+            electricity storage. One day we could all have batteries in our homes being used to store
+            our own energy. Opportunities like this will reduce the lifetime environmental impact of battery
+            manufacture.
+        </i>
+        <br />
+        <a href="https://www.edfenergy.com/for-home/energywise/electric-cars-and-environment#:~:text=The%20major%20benefit%20of%20electric,This%20reduces%20air%20pollution%20considerably">
+            - edfenergy.com
+        </a>
+    </blockquote>
+
+    <br />
+    <hr />
+    <br />
+
+    <h1 style="padding-block: 1vw; color: black;">What about the electricity required to fuel an electric car?</h1>
+    <p class="txtfield">
+        Research by the European Energy Agency found that, even with electricity generation, the carbon
+        emissions of an electric car are around 17 – 30% lower than driving a petrol or diesel car.
+        The emissions from electricity generation are also dramatically improved when low carbon electricity is used.
+        <br />
+        <a href="https://www.eea.europa.eu/publications/electric-vehicles-from-life-cycle">- eea.europa.eu</a>
+    </p>
+
+</div>
+
+<style>
+
+    .aboutField {
+        background-color: darkolivegreen;
+        font-size: 18px;
+        border: 1px solid black;
+        margin-top: 1vw;
+        margin-inline: 4vw;
+        padding-inline: 3vw;
+        padding-block-end: 1vw;
+        border-radius: 5vw;
+        box-shadow: 0.25vw 0.5vw;
+    }
+
+    .headerField {
+        background-color: darkolivegreen;
+        margin-top: 4vw;
+        margin-inline: 4vw;
+        padding-inline: 3vw;
+        padding-block-end: 1vw;
+    }
+
+    .informationField {
+        background-color: darkolivegreen;
+        font-size: 18px;
+        border: 1px solid black;
+        margin: 4vw;
+        padding-inline: 3vw;
+        padding-block-end: 1vw;
+        border-radius: 5vw;
+        box-shadow: 0.25vw 0.5vw;
+
+    }
+
+    .txtfield {
+        color: white;
+    }
+
+    .buttonfield {
+        font-size: 15px;
+        margin-top: 5vw;
+        margin-inline: 4vw;
+        padding-inline: 3vw;
+        padding-block-end: 1vw;
+        text-align:center;
+        
+      }
+
+    .button {
+        background: transparent;
+        border: none;
+    }
+
+    /* button styling */
+    .button {
+        --border-right: 6px;
+        --text-stroke-color: rgba(255,255,255,0.6);
+        --animation-color: #37FF8B;
+        --fs-size: 2em;
+        letter-spacing: 3px;
+        text-decoration: none;
+        font-size: var(--fs-size);
+        font-family: "Arial";
+        position: relative;
+        text-transform: uppercase;
+        color: darkolivegreen;
+        -webkit-text-stroke: 1px var(--text-stroke-color);
+    }
+    /* this is the text, when you hover on button */
+    .hover-text {
+        position: absolute;
+        box-sizing: border-box;
+        content: attr(data-text);
+        color: var(--animation-color);
+        width: 0%;
+        inset: 0;
+        border-right: var(--border-right) solid var(--animation-color);
+        overflow: hidden;
+        transition: 0.5s;
+        -webkit-text-stroke: 1px var(--animation-color);
+    }
+    /* hover */
+    .button:hover .hover-text {
+        width: 100%;
+        filter: drop-shadow(0 0 23px var(--animation-color))
+    }
+   
+    }
+</style>
