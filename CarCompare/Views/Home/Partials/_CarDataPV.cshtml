@@ -1,0 +1,24 @@
+﻿@model CarCompare.ViewModels.CarDataVM
+
+@{
+    //Partial view regarding the generation of all vehicles, each loop is one vehicle.
+    // Printed in order of: Names, modelYear, co2
+    // Currently prints ALL the vehicles, can be changed later
+    Model.GenerateVehicleList();
+    foreach (List<Object> vehicle in Model.GetVehicleList)
+    {
+        <div class="row table-bordered" style="margin:.1vw">
+            <div class="col-md-6">
+                <p>@vehicle.ToArray()[0]</p>
+                <p>@vehicle.ToArray()[1]</p>
+                <p>@vehicle.ToArray()[2]</p>
+            </div>
+            @*Temporary button for the Learn more delivery thing*@
+            <div class="col-md-6">
+                <a class="button1" href="http://www.google.com/" target="_blank" rel="noopener noreferrer">Learn more!</a>
+            </div>
+
+        </div>
+
+    }
+}
