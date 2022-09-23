@@ -1,10 +1,13 @@
-﻿@model IEnumerable<CarCompare.Models.vehicle>
+﻿<!DOCTYPE html>
+<html>
+
+@model IEnumerable<CarCompare.Models.vehicle>
 @{
     ViewBag.Title = "Home Page";
 }
 
-<!--Link to stylesheet-->
 <head>
+    <!--Link to stylesheet-->
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 
     <style>
@@ -35,46 +38,49 @@
     </style>
 </head>
 
-<div class="field filter">
-    <div class="filterDrop" onclick="myFunction(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
+<body>
+    <div class="field filter">
+        <div class="filterDrop" onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
     </div>
-</div>
 
-<script>
-    function myFunction(x) {
-        x.classList.toggle("change");
-</script>
+    <script>
+        function myFunction(x) {
+            x.classList.toggle("change");
+    </script>
 
-<div class="field result">
-    <table class="table">
+    <div class="field result">
+        <table class="table">
 
-        @foreach (var item in Model)
-        {
-            <tr class="entry">
-                <td width="10px">
-                    <img src="@Html.DisplayFor(modelItem => item.Image)">
-                </td>
-                <td>
-                    <strong>@Html.DisplayFor(modelItem => item.Model)</strong>
-                    <br>
-                    Year: @Html.DisplayFor(modelItem => item.Year)
-                </td>
-                <td align="right">
-                    <br />
-                    <strong>@Html.DisplayFor(modelItem => item.Carbon_Emissions)</strong>
-                </td>
-                <td align="right" width="10px">
+            @foreach (var item in Model)
+            {
+                <tr class="entry">
+                    <td width="10px">
+                        <img src="@Html.DisplayFor(modelItem => item.Image)">
+                    </td>
+                    <td>
+                        <strong>@Html.DisplayFor(modelItem => item.Model)</strong>
+                        <br>
+                        Year: @Html.DisplayFor(modelItem => item.Year)
+                    </td>
+                    <td align="right">
+                        <br />
+                        <strong>@Html.DisplayFor(modelItem => item.Carbon_Emissions)</strong>
+                    </td>
+                    <td align="right" width="10px">
 
-                    <a class="button1" href="http://www.google.com/" target="_blank" rel="noopener noreferrer">
-                        <button class="button1">More Information</button>
-                    </a>
-                </td>
+                        <a class="button1" href="http://www.google.com/" target="_blank" rel="noopener noreferrer">
+                            <button class="button1">More Information</button>
+                        </a>
+                    </td>
 
-            </tr>
-        }
+                </tr>
+            }
 
-    </table>
-</div>
+        </table>
+    </div>
+</body>
+</html>
