@@ -32,5 +32,23 @@ namespace CarCompare.Controllers
 
             return View();
         }
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Error404()
+        {
+
+            return View();
+        }
+        public ActionResult Error500()
+        {
+
+            return View();
+        }
+
     }
 }

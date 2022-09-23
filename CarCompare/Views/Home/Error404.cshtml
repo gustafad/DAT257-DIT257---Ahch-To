@@ -1,0 +1,38 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "400";
+}
+
+    <div class="informationField">
+        <center>
+            @if (HttpContext.Current.IsDebuggingEnabled)
+            {
+
+
+                <h1>Ah shit, here we 404 again</h1><br />
+            }
+            else
+            {
+                <h1>Oops 404!</h1><br />
+            }
+
+
+        </center>
+        
+        <h4>Hello! The URL that was provided seems to be incorrect. Please check the URL or
+        use the menu to return to the site!</h4>
+    </div>
+<style>
+    .informationField {
+        color: white;
+        background-color: darkolivegreen;
+        font-size: 18px;
+        border: 1px solid black;
+        margin: 4vw;
+        padding-inline: 3vw;
+        padding-block-end: 1vw;
+        border-radius: 5vw;
+        box-shadow: 0.25vw 0.5vw;
+    }
+
+</style>
