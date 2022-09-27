@@ -7,10 +7,15 @@
     // Printed in order of: Names, modelYear, co2
     // Currently prints ALL the vehicles, can be changed later
     cdVM.GenerateVehicleList();
-    foreach (var vehicle in cdVM.GetSortedVehicles)
+
+    foreach (var vehicle in cdVM.GetSortedVehicles.Take(50))
     {
         <div class="row table-bordered" style="margin:.1vw">
             <div class="col-md-6">
+                <img class="entry-image" src="@vehicle.Image">
+            </div>
+            <div class="col-md-6">
+                
                 <p>@vehicle.Brand @vehicle.Generation</p>
                 <p>@vehicle.Yearstart</p>
 

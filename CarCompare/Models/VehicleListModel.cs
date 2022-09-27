@@ -30,8 +30,9 @@ namespace CarCompare.Models
         public string Co2;
         public string Co2Min;
         public string Co2Max;
+        public string Image;
 
-        public Vehicle(string brand, string model, string generation, string maxSpeed, string acceleration, string acceleration60, string yearstart, string coupe, string places, string placesMin, string drive, string standardFCc, string fuelConsumptionCombined, string fuelConsumptionCombinedMin, string fuelConsumptionCombinedMax, string emissionStandard, string standardCO2, string co2, string co2Min, string co2Max)
+        public Vehicle(string brand, string model, string generation, string maxSpeed, string acceleration, string acceleration60, string yearstart, string coupe, string places, string placesMin, string drive, string standardFCc, string fuelConsumptionCombined, string fuelConsumptionCombinedMin, string fuelConsumptionCombinedMax, string emissionStandard, string standardCO2, string co2, string co2Min, string co2Max, string image)
         {
             Brand = brand;
             Model = model;
@@ -53,6 +54,8 @@ namespace CarCompare.Models
             Co2 = co2;
             Co2Min = co2Min;
             Co2Max = co2Max;
+            Image = image;
+            
         }
     }
 
@@ -167,8 +170,9 @@ namespace CarCompare.Models
                     Modinfo("standardCO2"),
                     Modinfo("co2"),
                     Modinfo("co2Min"),
-                    Modinfo("co2Max")
-                );
+                    Modinfo("co2Max"),
+                    GetImage()
+                ) ;
 
                 return tmpVehicle;
 
@@ -189,6 +193,19 @@ namespace CarCompare.Models
                 }
             }
             return null;
+        }
+
+        public string GetImage()
+        {
+            //Checks to see if any images exist for the model generation and if not returns noCarImage
+            if (_cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].images.Count() != 0)
+            {
+                return _cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].images[0].big;
+            }
+            else
+            {
+                return "/Content/images/no_image.png";
+            }
         }
 
         public Vehicle[] GetSortedVehicles
