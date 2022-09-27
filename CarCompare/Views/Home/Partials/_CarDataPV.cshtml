@@ -1,17 +1,28 @@
-﻿@model CarCompare.ViewModels.CarDataVM
-
+﻿@model CarCompare.Models.VehicleListModel
+@{
+    CarCompare.Models.VehicleListModel cdVM = ViewBag.CarData;
+}
 @{
     //Partial view regarding the generation of all vehicles, each loop is one vehicle.
     // Printed in order of: Names, modelYear, co2
     // Currently prints ALL the vehicles, can be changed later
-    Model.GenerateVehicleList();
-    foreach (List<Object> vehicle in Model.GetVehicleList)
+    cdVM.GenerateVehicleList();
+    foreach (var vehicle in cdVM.GetSortedVehicles)
     {
         <div class="row table-bordered" style="margin:.1vw">
             <div class="col-md-6">
-                <p>@vehicle.ToArray()[0]</p>
-                <p>@vehicle.ToArray()[1]</p>
-                <p>@vehicle.ToArray()[2]</p>
+                <p>@vehicle.Brand @vehicle.Generation</p>
+                <p>@vehicle.Yearstart</p>
+
+                @if (vehicle.Co2 == null)
+                {
+                    <p>This car is all electric, no co2 emission!! :D</p>
+                }
+                else
+                {
+                    <p>@vehicle.Co2</p>
+                }
+
             </div>
             @*Temporary button for the Learn more delivery thing*@
             <div class="col-md-6">

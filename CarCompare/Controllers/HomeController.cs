@@ -16,7 +16,7 @@ namespace CarCompare.Controllers
         public ActionResult Index()
         {
             //move this to static outside so it does not load everytime index is loaded
-            ViewBag.CarData = new CarDataVM(CarDataService.CarData());
+            ViewBag.CarData = new VehicleListModel(CarDataService.CarData());
             if (ViewBag.CarData == null)
             {
                 //Return the error page instad here
