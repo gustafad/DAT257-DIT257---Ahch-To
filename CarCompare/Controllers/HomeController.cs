@@ -13,18 +13,12 @@ namespace CarCompare.Controllers
     public class HomeController : Controller
     {
         //Static VehicleList & SortingService creation
-        static VehicleListModel VLM = new VehicleListModel(CarDataService.CarData());
+        static CompareListModel CLM = new CompareListModel();
 
         //Index page (Home page) 
         public ActionResult Index()
         {
-            ViewBag.VehicleListModel = VLM;
-            if (ViewBag.VehicleListModel == null)
-            {
-                //Return the error page instad here
-                return View("About");
-            }
-            return View("Index", VLM);
+            return View("Index", CLM);
         }
 
         public ActionResult About()
@@ -47,13 +41,13 @@ namespace CarCompare.Controllers
             switch(action)
             {
                 case 1:
-                    VLM.Filter();
+                    CLM.Filter();
                     break;
                 case 2:
-                    VLM.ResetFilter();
+                    CLM.ResetFilter();
                     break;
             }
-            return View("Index", VLM);
+            return View("Index", CLM);
         }
 
     }

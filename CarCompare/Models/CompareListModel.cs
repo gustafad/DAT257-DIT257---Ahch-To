@@ -4,24 +4,26 @@ using System.Linq;
 using System.Web;
 using CarCompare.Models;
 
-namespace CarCompare.Services
+namespace CarCompare.Models
 {
-    //Helper class responsible for sorting and filtering all availible vehicles
-    public class SortingService
+    public class CompareListModel
     {
-        //Private Arrays
-        private readonly List<Vehicle> DefaultList;
+        //Private variables
+        private static VehicleList VehicleList;
         private List<Vehicle> CurrentList;
 
-        //Constructor transforming VehicleList to Internal arrays
-        public SortingService(List<Vehicle> VehicleList)
+        //Constructor
+        public CompareListModel()
         {
-            //Initializes both Lists to be sorted by Co2 emission
-            DefaultList = Sort(VehicleList);
-            CurrentList = DefaultList;
+            //Generates VehicleList
+            VehicleList = new VehicleList();
+            //Creates CurrentList and sorts it by Co2 emission
+            CurrentList = Sort(VehicleList.Get());
         }
 
-        //Returns the current array
+        //--PUBLIC METHODS--
+
+        //Get the VehicleArray
         public Vehicle[] GetArray()
         {
             return CurrentList.ToArray();
@@ -39,9 +41,9 @@ namespace CarCompare.Services
                 if (vehicle.Acceleration != null)
                 {
                     compVar = float.Parse(vehicle.Acceleration);
-                } 
+                }
 
-                if(compVar >= 10)
+                if (compVar >= 10)
                 {
                     filteredList.Add(vehicle);
                 }
@@ -50,16 +52,21 @@ namespace CarCompare.Services
             CurrentList = filteredList;
         }
 
+        //Resets
         public void ResetFilter()
         {
-            CurrentList = DefaultList;
+            CurrentList = Sort(VehicleList.Get());
         }
 
-        //!!To do!! Re-sort List depending on variable
+
+        //--PRIVATE METHODS--
+
+        //Sorts list by Co2 emission (!!TODO!! - Re-sort List depending on variable)
         public List<Vehicle> Sort(List<Vehicle> List)
         {
             return List.OrderBy(vehicle => vehicle.Co2).ToList();
         }
-
     }
+
+
 }

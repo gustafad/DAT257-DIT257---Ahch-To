@@ -1,4 +1,4 @@
-﻿@model CarCompare.Models.VehicleListModel
+﻿@model CarCompare.Models.CompareListModel
 
 <head>
     <!--Link to stylesheet-->
@@ -7,11 +7,20 @@
 
 <body>
     <div class="field filter">
-        @using (Html.BeginForm("HandleFilterButton", "Home"))
-        {
-            <button class="filterButton" type="submit" name="button" value="1">Filter</button>
-            <button class="filterButton" type="submit" name="button" value="2">Reset Filter</button>
-        }
+
+        <p class="showingXresults">
+            Showing 50 of @Model.GetArray().Length results:
+        </p>
+
+        <div class="buttonsField">
+            @using (Html.BeginForm("HandleFilterButton", "Home"))
+            {
+                <button class="button" type="submit" name="button" value="1">FILTER</button>
+                <button class="button" type="submit" name="button" value="2">RESET</button>
+            }
+        </div>
+        
+        
 
     </div>
 
