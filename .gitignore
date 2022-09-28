@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+CarCompare/.vs/CarCompare/v16/.suo
+<<<<<<< HEAD
+CarCompare/obj/Debug
+=======
+CarCompare/.vs
+>>>>>>> parent of 81421a8 (gitignore)
