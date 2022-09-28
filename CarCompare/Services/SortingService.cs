@@ -6,21 +6,59 @@ using CarCompare.Models;
 
 namespace CarCompare.Services
 {
+    //Helper class responsible for sorting and filtering all availible vehicles
     public class SortingService
     {
+        //Private Arrays
+        private readonly List<Vehicle> DefaultList;
+        private List<Vehicle> CurrentList;
 
-        private Vehicle[] VehicleArray;
+        //Constructor transforming VehicleList to Internal arrays
         public SortingService(List<Vehicle> VehicleList)
         {
-            VehicleArray = VehicleList.ToArray();
+            //Initializes both Lists to be sorted by Co2 emission
+            DefaultList = Sort(VehicleList);
+            CurrentList = DefaultList;
         }
 
-        public Vehicle[] GetSortedVehicles
+        //Returns the current array
+        public Vehicle[] GetArray()
         {
-            get
+            return CurrentList.ToArray();
+        }
+
+        //Filter current array (!!TODO!! - filter on other/multiple variables) 
+        public void Filter()
+        {
+            List<Vehicle> filteredList = new List<Vehicle>();
+            float compVar;
+
+            foreach (Vehicle vehicle in CurrentList)
             {
-                return VehicleArray.OrderBy(vehicle => vehicle.Co2).ToArray();
+                compVar = 0;
+                if (vehicle.Acceleration != null)
+                {
+                    compVar = float.Parse(vehicle.Acceleration);
+                } 
+
+                if(compVar >= 10)
+                {
+                    filteredList.Add(vehicle);
+                }
             }
+
+            CurrentList = filteredList;
+        }
+
+        public void ResetFilter()
+        {
+            CurrentList = DefaultList;
+        }
+
+        //!!To do!! Re-sort List depending on variable
+        public List<Vehicle> Sort(List<Vehicle> List)
+        {
+            return List.OrderBy(vehicle => vehicle.Co2).ToList();
         }
 
     }

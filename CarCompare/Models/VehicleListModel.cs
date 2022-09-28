@@ -58,20 +58,31 @@ namespace CarCompare.Models
 
     public class VehicleListModel
     {
+        //Private variables
         private CarDataDTO _cd;
         private List<Vehicle> VehicleList = new List<Vehicle>();
+        private SortingService SortingService;
         private int brandIndex;
         private int modelsIndex;
         private int generationsIndex;
         private int modificationIndex;
 
+        //Constructor
         public VehicleListModel(CarDataDTO model)
         {
             _cd = model;
+            this.GenerateVehicleList();
+
+            //Creates a private SortingService for the VehicleList
+            SortingService = new SortingService(VehicleList);
         }
 
+
+        //--PRIVATE HELPER METHODS--
+
+        //Generates the list.
         //May look very bad, but nessesary for the structure that was given in the XML. We work into each brand as far as we can and work outwards when we create the list.
-        public void GenerateVehicleList()
+        private void GenerateVehicleList()
         {
             for (int b = 0; b < GetBrandLength; b++)
             {
@@ -89,49 +100,47 @@ namespace CarCompare.Models
         }
 
         //Generates a single vehicle given the indexes that is required to get a single vehicle. 
-        public Vehicle GenerateVehicle(int brand, int models, int generations, int modifications)
+        private Vehicle GenerateVehicle(int brand, int models, int generations, int modifications)
         {
-            brandIndex = brand; modelsIndex = models; generationsIndex = generations; modificationIndex = modifications;
+            brandIndex = brand; 
+            modelsIndex = models; 
+            generationsIndex = generations; 
+            modificationIndex = modifications;
 
             Vehicle Vehicle = vehicle;
 
             return Vehicle;
         }
 
-        //Returns the VehicleList
-        public List<Vehicle> GetVehicleList
-        {
-            get
-            {
-                return VehicleList;
-            }
-        }
-        //Returns the BrandLength
-        public int GetBrandLength
+           //Returns the BrandLength
+        private int GetBrandLength
         {
             get
             {
                 return _cd.brand.Length;
             }
         }
+
         //Returns the ModelsLength
-        public int GetModelsLength
+        private int GetModelsLength
         {
             get
             {
                 return _cd.brand[brandIndex].models.Length;
             }
         }
+
         //Returns the GenerationsLength
-        public int GetGenerationsLength
+        private int GetGenerationsLength
         {
             get
             {
                 return _cd.brand[brandIndex].models[modelsIndex].generations.Length;
             }
         }
+
         //Returns the ModificaitonsLength
-        public int GetModificationsLength
+        private int GetModificationsLength
         {
             get
             {
@@ -139,9 +148,8 @@ namespace CarCompare.Models
             }
         }
 
-        //----------------------------------------------------------------------------------------
-
-        public Vehicle vehicle
+        //Creates new Vehicle
+        private Vehicle vehicle
         {
             get
             {
@@ -177,7 +185,8 @@ namespace CarCompare.Models
 
         }
 
-        public string Modinfo(string ModVariable)
+        //Extracts Modinfo and translates to Strings
+        private string Modinfo(string ModVariable)
         {
             var Items = _cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].modifications[modificationIndex].ItemsElementName;
             for (int i = 0; i < Items.Length; i++)
@@ -191,12 +200,23 @@ namespace CarCompare.Models
             return null;
         }
 
-        public Vehicle[] GetSortedVehicles
+        //--Public Vehicle List methods--
+
+        //Get the VehicleArray
+        public Vehicle[] GetArray()
         {
-            get
-            {
-                return new SortingService(VehicleList).GetSortedVehicles;
-            }
+            return this.SortingService.GetArray();
+        }
+
+        //Filter the VehicleArray
+        public void Filter()
+        {
+            this.SortingService.Filter();
+        }
+
+        public void ResetFilter()
+        {
+            this.SortingService.ResetFilter();
         }
 
     }

@@ -12,36 +12,48 @@ namespace CarCompare.Controllers
 {
     public class HomeController : Controller
     {
-        //Index page (home page) has the actual data
+        //Static VehicleList & SortingService creation
+        static VehicleListModel VLM = new VehicleListModel(CarDataService.CarData());
+
+        //Index page (Home page) 
         public ActionResult Index()
         {
-            //move this to static outside so it does not load everytime index is loaded
-            ViewBag.CarData = new VehicleListModel(CarDataService.CarData());
-            if (ViewBag.CarData == null)
+            ViewBag.VehicleListModel = VLM;
+            if (ViewBag.VehicleListModel == null)
             {
                 //Return the error page instad here
                 return View("About");
             }
-            return View();
+            return View("Index", VLM);
         }
 
         public ActionResult About()
         {
-            
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Error404()
         {
-
             return View();
         }
         public ActionResult Error500()
         {
-
             return View();
+        }
+
+        public ActionResult HandleFilterButton(String button)
+        {
+            int action = Int32.Parse(button);
+            switch(action)
+            {
+                case 1:
+                    VLM.Filter();
+                    break;
+                case 2:
+                    VLM.ResetFilter();
+                    break;
+            }
+            return View("Index", VLM);
         }
 
     }

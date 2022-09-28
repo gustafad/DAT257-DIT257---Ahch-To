@@ -1,18 +1,25 @@
 ﻿@model CarCompare.Models.VehicleListModel
-@{
-    CarCompare.Models.VehicleListModel cdVM = ViewBag.CarData;
-}
+
 @{
     //Partial view regarding the generation of all vehicles, each loop is one vehicle.
     // Printed in order of: Names, modelYear, co2
     // Currently prints ALL the vehicles, can be changed later
-    cdVM.GenerateVehicleList();
-    foreach (var vehicle in cdVM.GetSortedVehicles)
+    //SS.FilterVehicles();
+    foreach (var vehicle in Model.GetArray())
     {
         <div class="row table-bordered" style="margin:.1vw">
             <div class="col-md-6">
                 <p>@vehicle.Brand @vehicle.Generation</p>
                 <p>@vehicle.Yearstart</p>
+
+                @if (vehicle.Acceleration == null)
+                {
+                    <p>Acceleration: No information</p>
+                }
+                else
+                {
+                    <p>Acceleration: @vehicle.Acceleration</p>
+                }
 
                 @if (vehicle.Co2 == null)
                 {

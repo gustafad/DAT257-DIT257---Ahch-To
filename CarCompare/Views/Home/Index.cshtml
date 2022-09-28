@@ -1,8 +1,4 @@
 ﻿@model CarCompare.Models.VehicleListModel
-@{
-    ViewBag.Title = "Home Page";
-    CarCompare.Models.VehicleListModel cdVM = ViewBag.VehicleData;
-}
 
 <head>
     <!--Link to stylesheet-->
@@ -11,11 +7,16 @@
 
 <body>
     <div class="field filter">
+        @using (Html.BeginForm("HandleFilterButton", "Home"))
+        {
+            <button class="filterButton" type="submit" name="button" value="1">Filter</button>
+            <button class="filterButton" type="submit" name="button" value="2">Reset Filter</button>
+        }
 
     </div>
 
     <div class="field result">
         <!--Calls partial view so index does not get cluttered-->
-        @Html.Partial("Partials/_CarDataPV", cdVM)
+        @Html.Partial("Partials/_CarDataPV", Model)
     </div>
 </body>
