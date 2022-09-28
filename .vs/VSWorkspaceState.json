@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\CarCompare",
-    "\\CarCompare\\Views",
-    "\\CarCompare\\Views\\Home",
-    "\\Individual Reflections",
-    "\\Individual Reflections\\Week 1"
+    ""
   ],
-  "SelectedNode": "\\CarCompare\\Views\\Home\\Index.cshtml",
+  "SelectedNode": "\\CarCompare.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -16,13 +16,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="~/Content/images/LogoTransparent.png" alt="Logo" style="height:8vw"/>
+                <img src="~/Content/images/LogoTransparent.png" alt="Logo" style="height:8vw" />
                 @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home", null, new {style="color: lightgray;"})</li>
-                    <li>@Html.ActionLink("Information", "Information", "Home", null, new {style= "color: lightgray" })</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", null, new { style = "color: lightgray;" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", null, new { style = "color: lightgray" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { style = "color: lightgray" })</li>
                 </ul>

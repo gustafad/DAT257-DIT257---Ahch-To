@@ -1,0 +1,42 @@
+﻿@model CarCompare.Models.VehicleListModel
+
+@{
+    //Partial view regarding the generation of all vehicles, each loop is one vehicle.
+    // Printed in order of: Names, modelYear, co2
+    // Currently prints ALL the vehicles, can be changed later
+    //SS.FilterVehicles();
+    foreach (var vehicle in Model.GetArray())
+    {
+        <div class="row table-bordered" style="margin:.1vw">
+            <div class="col-md-6">
+                <p>@vehicle.Brand @vehicle.Generation</p>
+                <p>@vehicle.Yearstart</p>
+
+                @if (vehicle.Acceleration == null)
+                {
+                    <p>Acceleration: No information</p>
+                }
+                else
+                {
+                    <p>Acceleration: @vehicle.Acceleration</p>
+                }
+
+                @if (vehicle.Co2 == null)
+                {
+                    <p>This car is all electric, no co2 emission!! :D</p>
+                }
+                else
+                {
+                    <p>@vehicle.Co2</p>
+                }
+
+            </div>
+            @*Temporary button for the Learn more delivery thing*@
+            <div class="col-md-6">
+                <a class="button1" href="http://www.google.com/" target="_blank" rel="noopener noreferrer">Learn more!</a>
+            </div>
+
+        </div>
+
+    }
+}
