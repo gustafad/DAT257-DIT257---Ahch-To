@@ -2,3 +2,10 @@
 *.cache
 CarCompare/.vs/CarCompare/v16/.suo
 CarCompare/.vs
+CarCompare/.vs/CarCompare/v16/.suo
+CarCompare/bin
+CarCompare/obj/Debug/CarCompare.csproj.AssemblyReference.cache
+CarCompare/obj
+CarCompare/obj
+CarCompare/packages
+CarCompare/obj/Debug/CarCompare.csproj.AssemblyReference.cache
