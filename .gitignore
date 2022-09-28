@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+CarCompare/.vs/CarCompare/v16/.suo
+CarCompare/obj/Debug
