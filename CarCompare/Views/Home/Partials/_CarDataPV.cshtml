@@ -15,23 +15,24 @@
                 <img class="entry-image" src="@vehicle.Image">
             </div>
             <div class="col-md-6">
-                
-                <p>@vehicle.Brand @vehicle.Generation</p>
-                <p>@vehicle.Yearstart</p>
 
-                @if (vehicle.Co2 == null)
+                <p>@vehicle.Brand @vehicle.Generation</p>
+                <p>@vehicle.GetModification("yearstart")</p>
+                <p>Acceleration: @vehicle.GetModification("acceleration")</p>
+
+                @if (vehicle.GetModification("co2") == "Not Found")
                 {
                     <p>This car is all electric, no co2 emission!! :D</p>
                 }
                 else
                 {
-                    <p>@vehicle.Co2</p>
+                    <p>@vehicle.GetModification("co2")</p>
                 }
 
             </div>
             @*Temporary button for the Learn more delivery thing*@
             <div class="col-md-6">
-                <a class="button1" href="http://www.google.com/" target="_blank" rel="noopener noreferrer">Learn more!</a>
+                <a class="button1" href="@vehicle.GetSearchURL()" target="_blank" rel="noopener noreferrer">Learn more!</a>
             </div>
 
         </div>
