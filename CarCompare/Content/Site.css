@@ -183,3 +183,7 @@ table tr:nth-child(odd) td {
     width: 100%;
     filter: drop-shadow(0 0 23px var(--animation-color))
 }
+.entry-image{
+    width: 12vw;
+    height: 8vw
+}
