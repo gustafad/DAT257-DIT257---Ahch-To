@@ -1,0 +1,16 @@
+Det såg bra ut. Bra potential.
+
+Loggan var riktigt bra
+
+Designen såg bra ut men eventuellt dimma ner den gröna färgen för att få det mer pastelartat. Header kan vara bra i samma färg men de andra elementens färg kan ändras lite för att särskilja dem.
+
+Information om utsläpp från produktion?
+
+Design av lista måste implementeras.
+
+Kollapsbar filterlista kanske blir svårläst.
+
+Filter informationen för varje bil highlightas och är synlig då filtreringen är vald.
+
+
+
