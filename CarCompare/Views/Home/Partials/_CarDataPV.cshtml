@@ -20,7 +20,7 @@
                 <p>@vehicle.GetModification("yearstart")</p>
                 <p>Acceleration: @vehicle.GetModification("acceleration")</p>
 
-                @if (vehicle.GetModification("co2") == "Not Found")
+                @if (vehicle.GetModification("co2") == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found")
                 {
                     <p>This car is all electric, no co2 emission!! :D</p>
                 }

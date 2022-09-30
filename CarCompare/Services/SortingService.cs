@@ -19,7 +19,7 @@ namespace CarCompare.Services
         {
             get
             {
-                return VehicleArray.OrderBy(vehicle => { string value = vehicle.GetModification("co2"); if (value == "Not Found") { return "0"; } return value; }).ToArray();
+                return VehicleArray.OrderBy(vehicle => { string value = vehicle.GetModification("co2"); if (value == "Not Found" && vehicle.GetModification("fuelConsumptionCombined")=="Not Found") { return "0"; } return value; }).ToArray();
             }
         }
 
