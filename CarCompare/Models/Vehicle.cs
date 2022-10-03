@@ -35,7 +35,7 @@ namespace CarCompare.Models
         }
         public string GetSearchURL()
         {
-            return ("https://www.google.com/search?q=" + this.Brand + "+" + this.Generation + "+" + this.ModelYear);
+            return ("https://www.google.com/search?q=" + this.Brand + "+" + this.Generation + "+" + this.GetModification("yearstart"));
         }
     }
 }

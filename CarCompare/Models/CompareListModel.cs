@@ -21,7 +21,7 @@ namespace CarCompare.Models
             //Generates VehicleList
             VehicleList = new VehicleList();
             //Creates CurrentList and sorts it by Co2 emission
-            CurrentList = Sort(VehicleList.Get());
+            CurrentList = Sort(VehicleList.Get(), "co2");
         }
 
         //--PUBLIC METHODS--
@@ -58,22 +58,51 @@ namespace CarCompare.Models
         //Resets
         public void ResetFilter()
         {
-            CurrentList = Sort(VehicleList.Get());
+            CurrentList = Sort(VehicleList.Get(), "co2");
         }
 
 
         //--PRIVATE METHODS--
 
         //Sorts list by Co2 emission (!!TODO!! - Re-sort List depending on variable)
-        public List<Vehicle> Sort(List<Vehicle> List)
+        public List<Vehicle> Sort(List<Vehicle> List, string Modification)
         {
-            return List.OrderBy(
-                vehicle => { 
-                string value = vehicle.GetModification("co2"); 
-                if (value == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found") {
-                    return "0"; } return value; 
+            if(Modification == "co2")
+            {
+                return List.OrderBy(
+                vehicle => {
+                    string value = vehicle.GetModification("co2");
+                    if (value == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found")
+                    {
+                        return "0";
+                    }
+                    return value;
                 }
             ).ToList();
+            }
+            else
+            {
+                return List.OrderBy(
+                vehicle => {
+                    string value = vehicle.GetModification(Modification);
+                    if (value == "Not Found")
+                    {
+                        return "0";
+                    }
+                    return value;
+                }
+                ).ThenBy(
+                    vehicle => {
+                        string value = vehicle.GetModification("co2");
+                        if (value == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found")
+                        {
+                            return "0";
+                        }
+                        return value;
+                    }
+                ).ToList();
+            }
+
         }
     }
 

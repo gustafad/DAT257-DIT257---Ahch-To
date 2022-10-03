@@ -144,3 +144,7 @@ table tr:nth-child(odd) td {
 .txtfield {
     color: white;
 }
+.entry-image {
+    width: 12vw;
+    height: 8vw
+}
