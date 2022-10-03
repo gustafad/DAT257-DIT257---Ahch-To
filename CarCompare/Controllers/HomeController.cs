@@ -12,7 +12,7 @@ namespace CarCompare.Controllers
 {
     public class HomeController : Controller
     {
-        //Static VehicleList & SortingService creation
+        //Static CompareListModel creation
         static CompareListModel CLM = new CompareListModel();
 
         //Index page (Home page) 

@@ -117,8 +117,8 @@ namespace CarCompare.Models
 
         }
 
-        //Extracts Modinfo and translates to Strings
-        private string Modinfo(string ModVariable)
+        //Extracts Modinfo and returns it as Dictionary
+        private Dictionary<string, string> GetModDictionary()
         {
             var Items = _cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].modifications[modificationIndex].ItemsElementName;
             Dictionary<string, string> modifications = new Dictionary<string, string>();
@@ -129,9 +129,10 @@ namespace CarCompare.Models
             return modifications;
         }
 
-        public string GetImage()
+
+        //Checks to see if any images exist for the model generation and if not returns noCarImage
+        private string GetImage()
         {
-            //Checks to see if any images exist for the model generation and if not returns noCarImage
             if (_cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].images.Count() != 0)
             {
                 return _cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].images[0].big;

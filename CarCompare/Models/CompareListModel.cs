@@ -38,9 +38,9 @@ namespace CarCompare.Models
             foreach (Vehicle vehicle in CurrentList)
             {
                 compVar = 0;
-                if (vehicle.Acceleration != null)
+                if (!vehicle.GetModification("acceleration").Equals("Not Found"))
                 {
-                    compVar = float.Parse(vehicle.Acceleration);
+                    compVar = float.Parse(vehicle.GetModification("acceleration"));
                 }
 
                 if (compVar >= 10)
@@ -64,7 +64,7 @@ namespace CarCompare.Models
         //Sorts list by Co2 emission (!!TODO!! - Re-sort List depending on variable)
         public List<Vehicle> Sort(List<Vehicle> List)
         {
-            return List.OrderBy(vehicle => vehicle.Co2).ToList();
+            return List.OrderBy(vehicle => vehicle.GetModification("co2")).ToList();
         }
     }
 
