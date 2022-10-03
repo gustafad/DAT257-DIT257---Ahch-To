@@ -313,7 +313,6 @@ C:/Users/ebube/OneDrive/Skrivbord/CarCompare-Agile/DAT257-DIT257---Ahch-To/CarCo
 /Users/ebubekirsimsek/Desktop/Agile/DAT257-DIT257---Ahch-To/CarCompare/obj/Debug/CarCompare.csproj.CopyComplete
 /Users/ebubekirsimsek/Desktop/Agile/DAT257-DIT257---Ahch-To/CarCompare/obj/Debug/CarCompare.dll
 /Users/ebubekirsimsek/Desktop/Agile/DAT257-DIT257---Ahch-To/CarCompare/obj/Debug/CarCompare.pdb
-D:\Google Drive\Working folder\Repos\DAT257-DIT257---Ahch-To\CarCompare\obj\Debug\CarCompare.csproj.AssemblyReference.cache
 D:\Google Drive\Working folder\Repos\DAT257-DIT257---Ahch-To\CarCompare\obj\Debug\CarCompare.csproj.CoreCompileInputs.cache
 D:\Google Drive\Working folder\Repos\DAT257-DIT257---Ahch-To\CarCompare\obj\Debug\CarCompare.dll
 D:\Google Drive\Working folder\Repos\DAT257-DIT257---Ahch-To\CarCompare\obj\Debug\CarCompare.pdb

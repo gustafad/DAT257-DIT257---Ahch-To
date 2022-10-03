@@ -6,6 +6,7 @@ using CarCompare.Services;
 
 namespace CarCompare.Models
 {
+    //VehicleList model class. When created it generates the entire list with the CarDataService.CarData() method.
     public class VehicleList
     {
         //Private variables

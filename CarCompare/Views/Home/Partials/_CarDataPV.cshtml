@@ -3,7 +3,7 @@
 @{
     //Partial view regarding the generation of all vehicles, each loop is one vehicle.
     // Printed in order of: Names, modelYear, co2
-    // Currently prints ALL the vehicles, can be changed later
+    // Currently prints only 50 first vehicles
     foreach (var vehicle in Model.GetArray().Take(50))
     {
     <div class="row table-bordered" style="margin:.1vw">

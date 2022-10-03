@@ -5,6 +5,7 @@ using System.Web;
 
 namespace CarCompare.Models
 {
+    //Vehicle model class
     public class Vehicle
     {
         public string Brand;

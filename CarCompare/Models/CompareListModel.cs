@@ -6,6 +6,9 @@ using CarCompare.Models;
 
 namespace CarCompare.Models
 {
+
+    //Model class containing representation of and all functions needed for getting/sorting/filtering the list.
+    //Vehicle model and the VehicleList model are in separate classes.
     public class CompareListModel
     {
         //Private variables
@@ -64,7 +67,13 @@ namespace CarCompare.Models
         //Sorts list by Co2 emission (!!TODO!! - Re-sort List depending on variable)
         public List<Vehicle> Sort(List<Vehicle> List)
         {
-            return List.OrderBy(vehicle => vehicle.GetModification("co2")).ToList();
+            return List.OrderBy(
+                vehicle => { 
+                string value = vehicle.GetModification("co2"); 
+                if (value == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found") {
+                    return "0"; } return value; 
+                }
+            ).ToList();
         }
     }
 
