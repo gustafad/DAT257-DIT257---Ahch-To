@@ -1,7 +1,5 @@
-﻿@model CarCompare.Models.VehicleListModel
-@{
-    CarCompare.Models.VehicleListModel cdVM = ViewBag.CarData;
-}
+﻿@model CarCompare.Models.CompareListModel
+
 @{
     //Partial view regarding the generation of all vehicles, each loop is one vehicle.
     // Printed in order of: Names, modelYear, co2
@@ -9,6 +7,8 @@
     cdVM.GenerateVehicleList();
 
     foreach (var vehicle in cdVM.GetSortedVehicles.Take(50))
+    //SS.FilterVehicles();
+    foreach (var vehicle in Model.GetArray().Take(50))
     {
         <div class="row table-bordered" style="margin:.1vw">
             <div class="col-md-6">
@@ -21,6 +21,16 @@
                 <p>Acceleration: @vehicle.GetModification("acceleration")</p>
 
                 @if (vehicle.GetModification("co2") == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found")
+                @if (vehicle.Acceleration == null)
+                {
+                    <p>Acceleration: No information</p>
+                }
+                else
+                {
+                    <p>Acceleration: @vehicle.Acceleration</p>
+                }
+
+                @if (vehicle.Co2 == null)
                 {
                     <p>This car is all electric, no co2 emission!! :D</p>
                 }
