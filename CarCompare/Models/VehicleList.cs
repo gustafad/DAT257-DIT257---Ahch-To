@@ -2,62 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using CarCompare.Models;
 using CarCompare.Services;
 
 namespace CarCompare.Models
 {
-
-    public class Vehicle
+    //VehicleList model class. When created it generates the entire list with the CarDataService.CarData() method.
+    public class VehicleList
     {
-        public string Brand;
-        public string Model;
-        public string Generation;
-        public string ModelYear;
-        public string Image;
-        public Dictionary<string, string> ModificationDictionary;
-
-        public Vehicle(string brand, string model, string generation, string modelYear, Dictionary<string, string> modificationDictionary, string image)
-        {
-            Brand = brand;
-            Model = model;
-            Generation = generation;
-            ModelYear = modelYear;
-            Image = image;
-            ModificationDictionary = modificationDictionary;
-        }
-        public string GetModification(string mod)
-        {
-            string output = "";
-            if (this.ModificationDictionary.TryGetValue(mod, out output))
-            {
-                return output;
-            }
-            return "Not Found";
-        }
-        public string GetSearchURL()
-        {
-            return ("https://www.google.com/search?q=" + this.Brand +"+"+ this.Generation + "+" + this.ModelYear);
-        }
-    }
-
-    public class VehicleListModel
-    {
-        private CarDataDTO _cd;
-        private List<Vehicle> VehicleList = new List<Vehicle>();
+        //Private variables
+        private static CarDataDTO _cd = CarDataService.CarData();
+        private static List<Vehicle> List;
         private int brandIndex;
         private int modelsIndex;
         private int generationsIndex;
         private int modificationIndex;
 
-        public VehicleListModel(CarDataDTO model)
-        {
-            _cd = model;
-        }
-
+        //Constructs the list.
         //May look very bad, but nessesary for the structure that was given in the XML. We work into each brand as far as we can and work outwards when we create the list.
-        public void GenerateVehicleList()
+        public VehicleList()
         {
+            List = new List<Vehicle>();
+
             for (int b = 0; b < GetBrandLength; b++)
             {
                 for (int m = 0; m < GetModelsLength; m++)
@@ -66,57 +31,63 @@ namespace CarCompare.Models
                     {
                         for (int mod = 0; mod < GetModificationsLength; mod++)
                         {
-                            VehicleList.Add(GenerateVehicle(b, m, g, mod));
+                            List.Add(GenerateVehicle(b, m, g, mod));
                         }
                     }
                 }
             }
         }
 
-        //Generates a single vehicle given the indexes that is required to get a single vehicle. 
-        public Vehicle GenerateVehicle(int brand, int models, int generations, int modifications)
+        //--PUBLIC METHODS--
+        public List<Vehicle> Get()
         {
-            brandIndex = brand; modelsIndex = models; generationsIndex = generations; modificationIndex = modifications;
+            return List;
+        }
+
+        //--PRIVATE HELPER METHODS--
+
+        //Generates a single vehicle given the indexes that is required to get a single vehicle. 
+        private Vehicle GenerateVehicle(int brand, int models, int generations, int modifications)
+        {
+            brandIndex = brand;
+            modelsIndex = models;
+            generationsIndex = generations;
+            modificationIndex = modifications;
 
             Vehicle Vehicle = vehicle;
 
             return Vehicle;
         }
 
-        //Returns the VehicleList
-        public List<Vehicle> GetVehicleList
-        {
-            get
-            {
-                return VehicleList;
-            }
-        }
         //Returns the BrandLength
-        public int GetBrandLength
+        private int GetBrandLength
         {
             get
             {
                 return _cd.brand.Length;
             }
         }
+
         //Returns the ModelsLength
-        public int GetModelsLength
+        private int GetModelsLength
         {
             get
             {
                 return _cd.brand[brandIndex].models.Length;
             }
         }
+
         //Returns the GenerationsLength
-        public int GetGenerationsLength
+        private int GetGenerationsLength
         {
             get
             {
                 return _cd.brand[brandIndex].models[modelsIndex].generations.Length;
             }
         }
+
         //Returns the ModificaitonsLength
-        public int GetModificationsLength
+        private int GetModificationsLength
         {
             get
             {
@@ -124,9 +95,8 @@ namespace CarCompare.Models
             }
         }
 
-        //----------------------------------------------------------------------------------------
-
-        public Vehicle vehicle
+        //Creates new Vehicle
+        private Vehicle vehicle
         {
             get
             {
@@ -148,7 +118,8 @@ namespace CarCompare.Models
 
         }
 
-        public Dictionary<string, string> GetModDictionary()
+        //Extracts Modinfo and returns it as Dictionary
+        private Dictionary<string, string> GetModDictionary()
         {
             var Items = _cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].modifications[modificationIndex].ItemsElementName;
             Dictionary<string, string> modifications = new Dictionary<string, string>();
@@ -159,9 +130,10 @@ namespace CarCompare.Models
             return modifications;
         }
 
-        public string GetImage()
+
+        //Checks to see if any images exist for the model generation and if not returns noCarImage
+        private string GetImage()
         {
-            //Checks to see if any images exist for the model generation and if not returns noCarImage
             if (_cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].images.Count() != 0)
             {
                 return _cd.brand[brandIndex].models[modelsIndex].generations[generationsIndex].images[0].big;
@@ -171,16 +143,5 @@ namespace CarCompare.Models
                 return "/Content/images/no_image.png";
             }
         }
-
-        public Vehicle[] GetSortedVehicles
-        {
-            get
-            {
-                return new SortingService(VehicleList).GetSortedVehicles;
-            }
-        }
-
     }
-
-
 }

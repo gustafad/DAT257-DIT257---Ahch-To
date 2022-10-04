@@ -1,41 +1,36 @@
-﻿@model CarCompare.Models.VehicleListModel
-@{
-    CarCompare.Models.VehicleListModel cdVM = ViewBag.CarData;
-}
+﻿@model CarCompare.Models.CompareListModel
+
 @{
     //Partial view regarding the generation of all vehicles, each loop is one vehicle.
     // Printed in order of: Names, modelYear, co2
-    // Currently prints ALL the vehicles, can be changed later
-    cdVM.GenerateVehicleList();
-
-    foreach (var vehicle in cdVM.GetSortedVehicles.Take(50))
+    // Currently prints only 50 first vehicles
+    foreach (var vehicle in Model.GetArray().Take(50))
     {
-        <div class="row table-bordered" style="margin:.1vw">
-            <div class="col-md-6">
-                <img class="entry-image" src="@vehicle.Image">
-            </div>
-            <div class="col-md-6">
+    <div class="row table-bordered" style="margin:.1vw">
+        <div class="col-md-6">
+            <img class="entry-image" src="@vehicle.Image">
+        </div>
+        <div class="col-md-6">
 
-                <p>@vehicle.Brand @vehicle.Generation</p>
-                <p>@vehicle.GetModification("yearstart")</p>
-                <p>Acceleration: @vehicle.GetModification("acceleration")</p>
+            <p>@vehicle.Brand @vehicle.Generation</p>
+            <p>@vehicle.GetModification("yearstart")</p>
+            <p>Acceleration: @vehicle.GetModification("acceleration")</p>
 
-                @if (vehicle.GetModification("co2") == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found")
-                {
-                    <p>This car is all electric, no co2 emission!! :D</p>
-                }
-                else
-                {
-                    <p>@vehicle.GetModification("co2")</p>
-                }
-
-            </div>
-            @*Temporary button for the Learn more delivery thing*@
-            <div class="col-md-6">
-                <a class="button1" href="@vehicle.GetSearchURL()" target="_blank" rel="noopener noreferrer">Learn more!</a>
-            </div>
+            @if (vehicle.GetModification("co2") == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found")
+            {
+                <p>This car is all electric, no co2 emission!! :D</p>
+            }
+            else
+            {
+                <p>@vehicle.GetModification("co2")</p>
+            }
 
         </div>
+        @*Temporary button for the Learn more delivery thing*@
+        <div class="col-md-6">
+            <a class="button1" href="@vehicle.GetSearchURL()" target="_blank" rel="noopener noreferrer">Learn more!</a>
+        </div>
 
+    </div>
     }
 }

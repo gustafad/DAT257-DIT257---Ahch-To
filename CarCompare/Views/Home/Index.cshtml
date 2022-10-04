@@ -1,8 +1,4 @@
-﻿@model CarCompare.Models.VehicleListModel
-@{
-    ViewBag.Title = "Home Page";
-    CarCompare.Models.VehicleListModel cdVM = ViewBag.VehicleData;
-}
+﻿@model CarCompare.Models.CompareListModel
 
 <head>
     <!--Link to stylesheet-->
@@ -12,10 +8,24 @@
 <body>
     <div class="field filter">
 
+        <p class="showingXresults">
+            Showing 50 of @Model.GetArray().Length results:
+        </p>
+
+        <div class="buttonsField">
+            @using (Html.BeginForm("HandleFilterButton", "Home"))
+            {
+                <button class="button" type="submit" name="button" value="1">FILTER</button>
+                <button class="button" type="submit" name="button" value="2">RESET</button>
+            }
+        </div>
+        
+        
+
     </div>
 
     <div class="field result">
         <!--Calls partial view so index does not get cluttered-->
-        @Html.Partial("Partials/_CarDataPV", cdVM)
+        @Html.Partial("Partials/_CarDataPV", Model)
     </div>
 </body>
