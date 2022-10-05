@@ -15,14 +15,17 @@
             <p>@vehicle.Brand @vehicle.Generation</p>
             <p>@vehicle.GetModification("yearstart")</p>
             <p>Acceleration: @vehicle.GetModification("acceleration")</p>
+            <p>Number of seats: @vehicle.GetModification("places")</p>
+            <p>All electric range: @vehicle.GetModification("allElectricRange")</p>
 
-            @if (vehicle.GetModification("co2") == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found")
+
+            @if (vehicle.isAllElectric())
             {
-                <p>This car is all electric, no co2 emission!! :D</p>
+                <p>Co2 emissions: This car is all electric, no co2 emission!! :D</p>
             }
             else
             {
-                <p>@vehicle.GetModification("co2")</p>
+                <p>Co2 emissions: @vehicle.GetModification("co2")</p>
             }
 
         </div>

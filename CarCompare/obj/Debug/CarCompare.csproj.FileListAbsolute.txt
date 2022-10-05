@@ -397,3 +397,4 @@ D:\Google Drive\Working folder\Repos\DAT257-DIT257---Ahch-To\CarCompare\bin\Syst
 D:\Google Drive\Working folder\Repos\DAT257-DIT257---Ahch-To\CarCompare\bin\Antlr3.Runtime.pdb
 D:\Google Drive\Working folder\Repos\DAT257-DIT257---Ahch-To\CarCompare\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Google Drive\Working folder\Repos\DAT257-DIT257---Ahch-To\CarCompare\obj\Debug\CarCompare.csproj.CopyComplete
+D:\Google Drive\Working folder\Repos\DAT257-DIT257---Ahch-To\CarCompare\obj\Debug\CarCompare.csproj.AssemblyReference.cache
