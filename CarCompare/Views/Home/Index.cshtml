@@ -8,20 +8,13 @@
 <body>
     <div class="field filter">
 
-        <p class="showingXresults">
-            Showing 50 of @Model.GetArray().Length results:
-        </p>
 
-        <div class="buttonsField">
-            @using (Html.BeginForm("HandleFilterButton", "Home"))
-            {
-                <button class="button" type="submit" name="button" value="1">FILTER</button>
-                <button class="button" type="submit" name="button" value="2">RESET</button>
-            }
-        </div>
-        
-        
+        @Html.Partial("Partials/_FilterPV", Model)
 
+    </div>
+
+    <div class="sorting">
+        @Html.Partial("Partials/_SortingPV", Model)
     </div>
 
     <div class="field result">

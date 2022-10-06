@@ -33,6 +33,12 @@
     box-shadow: 0.2vw 0.2vw;
 }
 
+.sorting {
+    position: relative;
+    min-height: 1vw;
+    margin-right: 1vw;
+}
+
 /* Filter field specific*/
 .filter {
     background-color: #2c8574;

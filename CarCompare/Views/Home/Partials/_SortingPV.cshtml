@@ -1,0 +1,31 @@
+﻿@model CarCompare.Models.CompareListModel
+<head>
+    <!--Link to stylesheet-->
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+@{
+
+    <div class="field sortingF">
+        <text style="color: white"> Sort by: </text>
+        <select>
+            <option value="Co2">Co2</option>
+            <option value="YearOfManufacture">Year of manufacture</option>
+            <option value="AllElectricRange">All electric range</option>
+            <option value="Accelaration">Acceleration</option>
+        </select>
+    </div>
+
+
+}
+
+<style>
+    .sortingF {
+        position: relative;
+        background-color: #282936;
+        float: right;
+        margin: 0vw;
+        padding-inline: 0vw;
+        padding-block: 0vw;
+    }
+
+</style>
