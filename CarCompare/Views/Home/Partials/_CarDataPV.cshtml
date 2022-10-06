@@ -5,7 +5,8 @@
     // Printed in order of: Names, modelYear, co2
     // Currently prints only 50 first vehicles
 
-
+    int i = 0;
+    int k = 0;
     <div class="table-count">
         @foreach (var vehicle in Model.GetArray().Take(50))
         {
@@ -29,8 +30,9 @@
                     }
 
                 </div>
+                @*Buttons for Search URL and for opening the accordion of available data for current vehicle*@
                 <div class="col-md-3">
-                    <a href="@vehicle.GetSearchURL()">
+                    <a href="@vehicle.GetSearchURL()" target="_blank" rel="noopener noreferrer">
                         <button class="learn-more">
                             <span class="circle" aria-hidden="true">
                                 <span class="icon arrow"></span>
@@ -38,10 +40,51 @@
                             <span class="button-text">Learn More</span>
                         </button>
                     </a>
-                </div>
-                <div class="col-md-3">
+                    <a>
+                        <button class="learn-more" type="button" data-toggle="collapse" data-target="#@("accord" + i.ToString())" aria-expanded="false" aria-controls="@("accord" + i.ToString())" style="margin-top: 10px;">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Our Data</span>
+                        </button>
+                    </a>
                 </div>
             </div>
+            @*Accordion for available data. Splits the data into three different divs*@
+            <div class="row table-bordered" style="margin: .1vw; padding-left: 10px; padding-right: 10px">
+
+                <div class="collapse" id="@("accord" + i.ToString())">
+
+                    <div class="row">
+                        @{var size3 = (vehicle.ModificationDictionary.Count()) / 3;}
+                        <div class="col-md-4">
+                            @while (k < size3 + 1)
+                            {
+                                <p>@(vehicle.ModificationDictionary.ElementAt(k).Key + ": " + vehicle.ModificationDictionary.ElementAt(k).Value)</p>
+                                k++;
+                            }
+                        </div>
+                        <div class="col-md-4">
+                            @while (k < (size3 + 1) * 2)
+                            {
+                                <p>@(vehicle.ModificationDictionary.ElementAt(k).Key + ": " + vehicle.ModificationDictionary.ElementAt(k).Value)</p>
+                                k++;
+                            }
+                        </div>
+                        <div class="col-md-4">
+                            @while (k < vehicle.ModificationDictionary.Count())
+                            {
+                                <p>@(vehicle.ModificationDictionary.ElementAt(k).Key + ": " + vehicle.ModificationDictionary.ElementAt(k).Value)</p>
+                                k++;
+                            }
+                        </div>
+                        @{k = 0;}
+                    </div>
+
+                </div>
+            </div>
+
+            i++;
         }
     </div>
 
@@ -65,9 +108,18 @@
             font-weight: 500;
             line-height: 1.6;
         }
+        /*The text for the all data accordion*/
+        .col-md-4 {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 200px;
+            color: black;
+            font-weight: 500;
+            line-height: 1.6;
+        }
 
         /*Changing the color for every odd element, making them transparance */
-        .table-count > div:nth-child(odd) {
+        .table-count > div:nth-child(4n+3) {
             background-color: rgba(0,0,0,.3);
             color: #fff;
         }
