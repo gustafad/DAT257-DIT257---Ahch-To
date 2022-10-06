@@ -1,36 +1,74 @@
 ﻿@model CarCompare.Models.CompareListModel
 
 @{
+
+
     //Partial view regarding the generation of all vehicles, each loop is one vehicle.
     // Printed in order of: Names, modelYear, co2
     // Currently prints only 50 first vehicles
+    int i = 0;
+    int k = 0;
     foreach (var vehicle in Model.GetArray().Take(50))
     {
-    <div class="row table-bordered" style="margin:.1vw">
-        <div class="col-md-6">
-            <img class="entry-image" src="@vehicle.Image">
+        <div class="row table-bordered" style="margin:.1vw">
+            <div class="col-md-2">
+                <img class="entry-image" src="@vehicle.Image">
+            </div>
+            <div class="col-md-8">
+
+                <p>@vehicle.Brand @vehicle.Generation</p>
+                <p>@vehicle.GetModification("yearstart")</p>
+                <p>Acceleration: @vehicle.GetModification("acceleration")</p>
+
+                @if (vehicle.GetModification("co2") == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found")
+                {
+                    <p>This car is all electric, no co2 emission!! :D</p>
+                }
+                else
+                {
+                    <p>@vehicle.GetModification("co2")</p>
+                }
+
+            </div>
+            @*Buttons for Search URL and for opening the accordion of available data for current vehicle*@
+            <div class="col-md-2">
+                <a class="button1" href="@vehicle.GetSearchURL()" target="_blank" rel="noopener noreferrer">Learn more!</a>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#@("accord" + i.ToString())" aria-expanded="false" aria-controls="@("accord" + i.ToString())">
+                    More Data
+                </button>
+            </div>
+
         </div>
-        <div class="col-md-6">
+        @*Accordion for available data. Splits the data into three different divs*@
+        <div class="collapse" id="@("accord" + i.ToString())">
 
-            <p>@vehicle.Brand @vehicle.Generation</p>
-            <p>@vehicle.GetModification("yearstart")</p>
-            <p>Acceleration: @vehicle.GetModification("acceleration")</p>
-
-            @if (vehicle.GetModification("co2") == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found")
-            {
-                <p>This car is all electric, no co2 emission!! :D</p>
-            }
-            else
-            {
-                <p>@vehicle.GetModification("co2")</p>
-            }
+            <div class="row table">
+                @{var size3 = (vehicle.ModificationDictionary.Count()) / 3;}
+                <div class="col-md-4">
+                    @while (k < size3 + 1)
+                    {
+                        <p>@(vehicle.ModificationDictionary.ElementAt(k).Key + ": " + vehicle.ModificationDictionary.ElementAt(k).Value)</p>
+                        k++;
+                    }
+                </div>
+                <div class="col-md-4">
+                    @while (k < (size3 + 1) * 2)
+                    {
+                        <p>@(vehicle.ModificationDictionary.ElementAt(k).Key + ": " + vehicle.ModificationDictionary.ElementAt(k).Value)</p>
+                        k++;
+                    }
+                </div>
+                <div class="col-md-4">
+                    @while (k < vehicle.ModificationDictionary.Count())
+                    {
+                        <p>@(vehicle.ModificationDictionary.ElementAt(k).Key + ": " + vehicle.ModificationDictionary.ElementAt(k).Value)</p>
+                        k++;
+                    }
+                </div>
+                @{k = 0;}
+            </div>
 
         </div>
-        @*Temporary button for the Learn more delivery thing*@
-        <div class="col-md-6">
-            <a class="button1" href="@vehicle.GetSearchURL()" target="_blank" rel="noopener noreferrer">Learn more!</a>
-        </div>
-
-    </div>
+        i++;
     }
 }
