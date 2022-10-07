@@ -8,33 +8,13 @@
 <body>
     <div class="field filter">
 
-        @using (Html.BeginForm("FilterField", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @Html.LabelFor(Model => Model.accelerationMax)
-            <input type="text" name="accelerationMax" value="@Model.accelerationMax" />
 
-            @Html.LabelFor(Model => Model.accelerationMin)
-            <input type="text" name="accelerationMin" value="@Model.accelerationMin" />
+        @Html.Partial("Partials/_FilterPV", Model)
 
-            <button class="button" type="submit" name="button" value="1">FILTER</button>
-        }
+    </div>
 
-
-
-        <p class="showingXresults">
-            Showing 50 of @Model.GetArray().Length results:
-        </p>
-
-        <div class="buttonsField">
-            @using (Html.BeginForm("HandleFilterButton", "Home"))
-            {
-                <button class="button" type="submit" name="button" value="1">FILTER</button>
-                <button class="button" type="submit" name="button" value="2">RESET</button>
-            }
-        </div>
-
-
-
+    <div class="sorting">
+        @Html.Partial("Partials/_SortingPV", Model)
     </div>
 
     <div class="field result">

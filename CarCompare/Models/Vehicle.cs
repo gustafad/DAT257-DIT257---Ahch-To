@@ -29,8 +29,8 @@ namespace CarCompare.Models
         {
             string output;
 
-            if(mod == "co2" && 
-                !this.ModificationDictionary.TryGetValue("co2", out output) && 
+            if (mod == "co2" &&
+                !this.ModificationDictionary.TryGetValue("co2", out output) &&
                 !this.ModificationDictionary.TryGetValue("fuelConsumptionCombined", out output)) { return "0"; }
             if (this.ModificationDictionary.TryGetValue(mod, out output)) { return output; }
 

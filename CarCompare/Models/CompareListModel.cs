@@ -52,6 +52,22 @@ namespace CarCompare.Models
             return FilteredList.ToArray();
         }
 
+        public List<Vehicle> GetList()
+        {
+            return FilteredList.ToList();
+        }
+
+        public List<string> GetBrandsList()
+        {
+            List<string> BrandsList = new List<string>();
+            foreach(string brand in FilteredList.Select(brand => brand.Brand).Distinct())
+            {
+                BrandsList.Add(brand);
+            }
+
+            return BrandsList.OrderBy(q => q).ToList();
+        }
+
         //Filter current list after all modified filter variables
         public void Filter()
         {
@@ -62,21 +78,22 @@ namespace CarCompare.Models
             {
 
                 //Filters depending on ShowElectric/showHybrid variable
-                if(!showElectric && vehicle.isAllElectric()) { continue; }
-                if(!showHybrid && !vehicle.isAllElectric()) { continue; }
+                if (!showElectric && vehicle.isAllElectric()) { continue; }
+                if (!showHybrid && !vehicle.isAllElectric()) { continue; }
 
                 //Filters depending on brand variables if filtering by brands is enabled
                 if (brandsSpecified())
                 {
                     Boolean isBrand = false;
-                    foreach(String brand in specifiedBrands)
+                    foreach (String brand in specifiedBrands)
                     {
-                        if(vehicle.Brand.Equals(brand)) { 
+                        if (vehicle.Brand.Equals(brand))
+                        {
                             isBrand = true;
                             break;
                         }
                     }
-                    if(!isBrand) { continue; }
+                    if (!isBrand) { continue; }
                 }
 
                 //Filters depending on seats variables if filtering by seats is enabled
@@ -85,7 +102,8 @@ namespace CarCompare.Models
                     Boolean isSeatNr = false;
                     foreach (String nrOfSeats in specifiedSeats)
                     {
-                        if (vehicle.GetModification("places").Contains(nrOfSeats)) { 
+                        if (vehicle.GetModification("places").Contains(nrOfSeats))
+                        {
                             isSeatNr = true;
                             break;
                         }
@@ -97,7 +115,7 @@ namespace CarCompare.Models
                 if (accelerationModified())
                 {
                     float comp = vehicle.GetComp("acceleration");
-                    if(comp == -1) { continue; }
+                    if (comp == -1) { continue; }
                     if (accelerationMin != -1 && comp < accelerationMin) { continue; }
                     if (accelerationMax != -1 && comp > accelerationMax) { continue; }
                 }
@@ -138,7 +156,7 @@ namespace CarCompare.Models
 
         //--PRIVATE METHODS--
 
-        
+
 
         //Sorts list by Modification variabla. Ascending/Descending set through 'Ascending' boolean parameter.
         public void Sort(String Modification, Boolean Ascending)
@@ -147,7 +165,8 @@ namespace CarCompare.Models
             {
                 if (Ascending) { this.SortedList = this.SortedList.OrderBy(vehicle => vehicle.GetModification("co2")).ToList(); }
                 else { this.SortedList = this.SortedList.OrderByDescending(vehicle => vehicle.GetModification("co2")).ToList(); }
-            } else
+            }
+            else
             {
                 if (Ascending)
                 {
@@ -169,7 +188,7 @@ namespace CarCompare.Models
         //Sets default filter variables
         private void setDefaultFilter()
         {
-            showElectric = false;
+            showElectric = true;
             showHybrid = true;
 
             accelerationMin = -1;
