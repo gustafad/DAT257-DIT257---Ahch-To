@@ -1,0 +1,34 @@
+What do I want to learn or understand better?
+
+I have gained more of an understanding in how we could sort our list yet and shown it to the person developing the sorting functions. While it worked
+on the test cases it was not quite generic enough to work flawlessly on all types of required sort values and more research will be done next sprint to
+adapt or expand the solution to more types so that we can have sorting to suit all our needed types.
+
+
+How can I help someone else, or the entire team, to learn something new?
+
+I have shown my example solution to the member implementing sorting. Since we should be done with all of our backlogged features next week I will try to 
+coax the simulated shareholder into giving me more ideas (read work). This should continue to allow the teams skill concerning flexibility to increase
+as now we hopefully have more tasks not thought of by ourselves therefore having an implicit context of the use case of the features. This will also test
+my ability in conveying these features to the team and my ability in finding relevant context and criteria for the feature from the stakeholder.
+
+
+What is my contribution towards the team’s use of Scrum?
+
+The newly added user stories creation and implementation went well. The user stories themselves I believe were written and chosen well enough
+to provide necessary context to the teams developing each and the results were in line with not only how I believe they should look but also 
+how the team felt when they were discussed and altered during the meeting. Choosing acceptance criteria is something I will have to improve upon 
+since more specificity might be needed in certain parts. For example I wrote that a filter should be able to be applied to the list however it
+would help if the variables would be stated in the acceptance criteria. Next sprint while working to create new user stories I will keep this 
+in mind to give even more clarity to developers on what is expected.
+ 
+
+What is my contribution towards the team’s deliveries?
+
+I completed a user story during the week and merged it with the others work.
+During the week I have been looking through the code and how it works more thoroughly and found that the debug mode was slowing down the product immensely.
+Switching to release mode instead improved all aspects of speed significantly and alleviated worries that I and the team had that the website may be too slow.
+This was a trivial fix and a more knowledgable web developer would have spotted this instantly however in this instances it shows that the work of looking through
+code from a larger perspective and researching already completed work may have a significant positive impact on the product as a whole. Issues like this
+may still exist and looking through the products code for inefficiencies or incomplete features not covered by the user stories is something I will continue to
+do during next sprint to hopefully leave customers and the stakeholder even more satisfied.
