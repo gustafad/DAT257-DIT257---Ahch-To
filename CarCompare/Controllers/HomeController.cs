@@ -35,6 +35,14 @@ namespace CarCompare.Controllers
             return View();
         }
 
+        public ActionResult FilterField(String accelerationMax, String accelerationMin)
+        {
+            CLM.accelerationMin = float.Parse(accelerationMin);
+            CLM.accelerationMax = float.Parse(accelerationMax);
+            CLM.Filter();
+            return View("Index", CLM);
+        }
+
         public ActionResult HandleFilterButton(String button)
         {
             int action = Int32.Parse(button);
