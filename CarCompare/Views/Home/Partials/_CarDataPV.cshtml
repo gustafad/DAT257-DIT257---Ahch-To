@@ -4,33 +4,214 @@
     //Partial view regarding the generation of all vehicles, each loop is one vehicle.
     // Printed in order of: Names, modelYear, co2
     // Currently prints only 50 first vehicles
-    foreach (var vehicle in Model.GetArray().Take(50))
-    {
-    <div class="row table-bordered" style="margin:.1vw">
-        <div class="col-md-6">
-            <img class="entry-image" src="@vehicle.Image">
-        </div>
-        <div class="col-md-6">
 
-            <p>@vehicle.Brand @vehicle.Generation</p>
-            <p>@vehicle.GetModification("yearstart")</p>
-            <p>Acceleration: @vehicle.GetModification("acceleration")</p>
+    int i = 0;
+    int k = 0;
+    <div class="table-count">
+        @foreach (var vehicle in Model.GetArray().Take(50))
+        {
+            <div class="row table-bordered" id="table-entry" style="margin:.1vw">
+                <div class="col-md-3">
+                    <img class="entry-image" src="@vehicle.Image">
+                </div>
+                <div class="col-md-5">
 
-            @if (vehicle.GetModification("co2") == "Not Found" && vehicle.GetModification("fuelConsumptionCombined") == "Not Found")
-            {
-                <p>This car is all electric, no co2 emission!! :D</p>
-            }
-            else
-            {
-                <p>@vehicle.GetModification("co2")</p>
-            }
+                    <p>Brand: @vehicle.Brand @vehicle.Generation</p>
+                    <p>Yearstart: @vehicle.GetModification("yearstart")</p>
+                    <p>Acceleration: @vehicle.GetModification("acceleration")</p>
 
-        </div>
-        @*Temporary button for the Learn more delivery thing*@
-        <div class="col-md-6">
-            <a class="button1" href="@vehicle.GetSearchURL()" target="_blank" rel="noopener noreferrer">Learn more!</a>
-        </div>
+                    @if (vehicle.isAllElectric())
+                    {
+                        <p>This car is all electric, no co2 emission!! :D</p>
+                    }
+                    else
+                    {
+                        <p>@vehicle.GetModification("co2")</p>
+                    }
 
+                </div>
+                @*Buttons for Search URL and for opening the accordion of available data for current vehicle*@
+                <div class="col-md-3">
+                    <a href="@vehicle.GetSearchURL()" target="_blank" rel="noopener noreferrer">
+                        <button class="learn-more">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Learn More</span>
+                        </button>
+                    </a>
+                    <a>
+                        <button class="learn-more" type="button" data-toggle="collapse" data-target="#@("accord" + i.ToString())" aria-expanded="false" aria-controls="@("accord" + i.ToString())" style="margin-top: 10px;">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Our Data</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            @*Accordion for available data. Splits the data into three different divs*@
+            <div class="row table-bordered" style="margin: .1vw; padding-left: 10px; padding-right: 10px">
+
+                <div class="collapse" id="@("accord" + i.ToString())">
+
+                    <div class="row">
+                        @{var size3 = (vehicle.ModificationDictionary.Count()) / 3;}
+                        <div class="col-md-4">
+                            @while (k < size3 + 1)
+                            {
+                                <p>@(vehicle.ModificationDictionary.ElementAt(k).Key + ": " + vehicle.ModificationDictionary.ElementAt(k).Value)</p>
+                                k++;
+                            }
+                        </div>
+                        <div class="col-md-4">
+                            @while (k < (size3 + 1) * 2)
+                            {
+                                <p>@(vehicle.ModificationDictionary.ElementAt(k).Key + ": " + vehicle.ModificationDictionary.ElementAt(k).Value)</p>
+                                k++;
+                            }
+                        </div>
+                        <div class="col-md-4">
+                            @while (k < vehicle.ModificationDictionary.Count())
+                            {
+                                <p>@(vehicle.ModificationDictionary.ElementAt(k).Key + ": " + vehicle.ModificationDictionary.ElementAt(k).Value)</p>
+                                k++;
+                            }
+                        </div>
+                        @{k = 0;}
+                    </div>
+
+                </div>
+            </div>
+
+            i++;
+        }
     </div>
-    }
+
+
+    <style>
+
+        /*For each image in the list*/
+        .entry-image {
+            float: left;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        /*The text in each table*/
+        .col-md-5 {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 200px;
+            color: black;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        /*The text for the all data accordion*/
+        .col-md-4 {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 200px;
+            color: black;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        /*Changing the color for every odd element, making them transparance */
+        .table-count > div:nth-child(4n+3) {
+            background-color: rgba(0,0,0,.3);
+            color: #fff;
+        }
+
+        /* CSS for Button-LearnMore and it's animtion*/
+        button {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            outline: none;
+            border: 0;
+            vertical-align: middle;
+            text-decoration: none;
+            background: transparent;
+            padding: 0;
+            font-size: inherit;
+            font-family: inherit;
+            margin-top: 65px;
+        }
+
+            button.learn-more {
+                width: 18rem;
+                height: auto;
+            }
+
+                button.learn-more .circle {
+                    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+                    position: relative;
+                    display: block;
+                    margin: 0;
+                    width: 3rem;
+                    height: 3rem;
+                    background: #282936;
+                    border-radius: 1.625rem;
+                }
+
+                    button.learn-more .circle .icon {
+                        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                        background: #fff;
+                    }
+
+                        button.learn-more .circle .icon.arrow {
+                            transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+                            left: 0.625rem;
+                            width: 1.125rem;
+                            height: 0.125rem;
+                            background: none;
+                        }
+
+                            button.learn-more .circle .icon.arrow::before {
+                                position: absolute;
+                                content: "";
+                                top: -0.29rem;
+                                right: 0.0625rem;
+                                width: 0.625rem;
+                                height: 0.625rem;
+                                border-top: 0.125rem solid #fff;
+                                border-right: 0.125rem solid #fff;
+                                transform: rotate(45deg);
+                            }
+
+                button.learn-more .button-text {
+                    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 10px;
+                    padding: 0.75rem 0;
+                    margin: -0.5rem -0.5rem -0.5rem 1.85rem;
+                    color: #282936;
+                    font-weight: 700;
+                    line-height: 1.6;
+                    align-content: center;
+                    text-transform: uppercase;
+                }
+
+            button:hover .circle {
+                width: 100%;
+            }
+
+                button:hover .circle .icon.arrow {
+                    background: #fff;
+                    transform: translate(1rem, 0);
+                }
+
+            button:hover .button-text {
+                color: #fff;
+            }
+    </style>
 }
