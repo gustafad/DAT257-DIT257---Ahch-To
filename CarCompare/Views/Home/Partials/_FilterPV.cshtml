@@ -28,7 +28,7 @@
         <input type="checkbox" id="checkbox-brands">
         <label class="dropdown-text buttonF2 buttonF" for="checkbox-brands">Brands</label>
         <ul class="dropdown-ul">
-            @foreach (var brand in Model.Sort(Model.GetArray().ToList(), "brand").Select(brand => brand.Brand).Distinct())
+            @foreach (var brand in Model.GetList().Select(brand => brand.Brand).Distinct())
             {
                 <li class="dropdown-li">
                     <input type="checkbox" id="Brand @brand" name="Brand @brand" value="Brand @brand">

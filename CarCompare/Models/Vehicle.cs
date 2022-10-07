@@ -24,15 +24,37 @@ namespace CarCompare.Models
             Image = image;
             ModificationDictionary = modificationDictionary;
         }
+
         public string GetModification(string mod)
         {
-            string output = "";
-            if (this.ModificationDictionary.TryGetValue(mod, out output))
-            {
-                return output;
-            }
+            string output;
+
+            if (mod == "co2" &&
+                !this.ModificationDictionary.TryGetValue("co2", out output) &&
+                !this.ModificationDictionary.TryGetValue("fuelConsumptionCombined", out output)) { return "0"; }
+            if (this.ModificationDictionary.TryGetValue(mod, out output)) { return output; }
+
             return "Not Found";
         }
+
+        public float GetComp(String mod)
+        {
+            float comp = -1;
+            string output;
+
+            if (this.ModificationDictionary.TryGetValue(mod, out output))
+            {
+                if (float.TryParse(output, out comp)) { return comp; }
+            }
+
+            return comp;
+        }
+
+        public Boolean isAllElectric()
+        {
+            return this.GetModification("co2") == "0" && this.GetModification("fuelConsumptionCombined") == "Not Found";
+        }
+
         public string GetSearchURL()
         {
             return ("https://www.google.com/search?q=" + this.Brand + "+" + this.Generation + "+" + this.GetModification("yearstart"));
