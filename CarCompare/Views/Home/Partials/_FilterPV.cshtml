@@ -8,19 +8,17 @@
 </head>
 
 
-@{
-
+@using (Html.BeginForm("FilterField", "Home", FormMethod.Post))
+{
     // --------------- button and result info ------------
     <p class="showingXresults">
         Showing 50 of @Model.GetArray().Length results:
     </p>
 
+    //----------------- Filter buttons ----------------------
     <div class="buttonsField">
-        @using (Html.BeginForm("HandleFilterButton", "Home"))
-        {
-            <button class="buttonF" type="submit" name="button" value="1">FILTER</button>
-            <button class="buttonF" type="submit" name="button" value="2">RESET</button>
-        }
+        <button class="buttonF" type="submit" name="button" value="filter">FILTER</button>
+        <button class="buttonF" type="submit" name="button" value="reset">RESET</button>
     </div>
 
     //----------------- brand ----------------------
@@ -28,10 +26,10 @@
         <input type="checkbox" id="checkbox-brands">
         <label class="dropdown-text buttonF2 buttonF" for="checkbox-brands">Brands</label>
         <ul class="dropdown-ul">
-            @foreach (var brand in Model.GetList().Select(brand => brand.Brand).Distinct())
+            @foreach (string brand in Model.GetBrandsList())
             {
                 <li class="dropdown-li">
-                    <input type="checkbox" id="Brand @brand" name="Brand @brand" value="Brand @brand">
+                    <input type="checkbox" id="Brand @brand" name="@brand" value="Brand @brand">
                     <label class="element-checkbox" for="Brand @brand">
                         <text class="entry" for="Brand @brand">@brand</text>
                     </label>
@@ -39,6 +37,7 @@
             }
         </ul>
     </div>
+
     //----------------- RangeMin ----------------------
     <div class="dropdown">
         <input type="checkbox" id="checkbox-rangeMin">
@@ -47,7 +46,7 @@
             @for (int i = 90; i <= 700; i += 10)
             {
                 <li class="dropdown-li">
-                    <input type="checkbox" id="RangeMin @i" name="" value="RangeMin @i">
+                    <input type="checkbox" id="RangeMin @i" name="rangeMin" value="@i">
                     <label class="element-checkbox" for="RangeMin @i">
                         <text class="entry" for="RangeMin @i">@i km</text>
                     </label>
@@ -64,7 +63,7 @@
             @for (int i = 1990; i <= 2022; i++)
             {
                 <li class="dropdown-li">
-                    <input type="checkbox" id="ModelYearMin @i" name="" value="ModelYearMin @i">
+                    <input type="checkbox" id="ModelYearMin @i" name="yearMin" value="@i">
                     <label class="element-checkbox" for="ModelYearMin @i">
                         <text class="entry" for="ModelYearMin @i">@i</text>
                     </label>
@@ -72,6 +71,7 @@
             }
         </ul>
     </div>
+
     //----------------- Acceleration ----------------------
     <div class="dropdown">
         <input type="checkbox" id="checkbox-acceleration">
@@ -80,7 +80,7 @@
             @for (int i = 1; i < 16; i++)
             {
                 <li class="dropdown-li">
-                    <input type="checkbox" id="acceleration @i" name="" value="acceleration @i">
+                    <input type="checkbox" id="acceleration @i" name="acceleration" value="@i">
                     <label class="element-checkbox" for="acceleration @i">
                         <text class="entry" for="acceleration @i">@i sec</text>
                     </label>
@@ -88,12 +88,16 @@
             }
         </ul>
     </div>
+
     //----------------- electric and hybrid --------
     <div class="dropdown" style="padding-bottom:25px">
         <div class="allElectric">
             <p>All electric</p>
             <label class="switch">
-                <input type="checkbox">
+                @if (Model.showElectric)
+                {<input type="checkbox" name="allElectric" value="true" checked> }
+                else
+                { <input type="checkbox" name="allElectric" value="true">}
                 <span class="slider"></span>
             </label>
 
@@ -102,11 +106,15 @@
         <div class="hybrid">
             <p>Hybrid</p>
             <label class="switch" style="left:32px;">
-                <input type="checkbox">
+                @if (Model.showHybrid)
+                {<input type="checkbox" name="hybrid" value="true" checked> }
+                else
+                { <input type="checkbox" name="hybrid" value="true">}
                 <span class="slider"></span>
             </label>
         </div>
     </div>
+
     //----------------- MaxRange ----------------------
     <div class="dropdown">
         <input type="checkbox" id="checkbox-rangeMax">
@@ -115,7 +123,7 @@
             @for (int i = 90; i < 710; i += 10)
             {
                 <li class="dropdown-li">
-                    <input type="checkbox" id="rangeMax @i" name="" value="rangeMax @i">
+                    <input type="checkbox" id="rangeMax @i" name="rangeMax" value="@i">
                     <label class="element-checkbox" for="rangeMax @i">
                         <text class="entry" for="rangeMax @i">@i km</text>
                     </label>
@@ -123,6 +131,7 @@
             }
         </ul>
     </div>
+
     //----------------- Max year of manufacture ----------------------
     <div class="dropdown">
         <input type="checkbox" id="checkbox-modelYearMax">
@@ -132,7 +141,7 @@
             @for (int i = 1990; i <= 2022; i++)
             {
                 <li class="dropdown-li">
-                    <input type="checkbox" id="modelYearMax @i" name="" value="modelYearMax @i">
+                    <input type="checkbox" id="modelYearMax @i" name="yearMax" value="@i">
                     <label class="element-checkbox" for="modelYearMax @i">
                         <text class="entry" for="modelYearMax @i">@i</text>
                     </label>
@@ -140,6 +149,7 @@
             }
         </ul>
     </div>
+
     //----------------- Number of seats ----------------------
     <div class="dropdown">
         <input type="checkbox" id="checkbox-seats">
@@ -149,7 +159,7 @@
             @for (int i = 1; i <= 9; i++)
             {
                 <li class="dropdown-li">
-                    <input type="checkbox" id="seats @i" name="" value="seats @i">
+                    <input type="checkbox" id="seats @i" name="seats @i" value="seats @i">
                     <label class="element-checkbox" for="seats @i">
                         <text class="entry" for="seats @i">@i</text>
                     </label>
@@ -158,6 +168,7 @@
         </ul>
     </div>
 }
+
 
 <style>
 

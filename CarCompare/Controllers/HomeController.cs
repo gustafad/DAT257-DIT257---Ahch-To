@@ -35,28 +35,57 @@ namespace CarCompare.Controllers
             return View();
         }
 
-        public ActionResult FilterField(String accelerationMax, String accelerationMin)
+        [HttpPost]
+        public ActionResult FilterField(FormCollection variables)
         {
-            CLM.accelerationMin = float.Parse(accelerationMin);
-            CLM.accelerationMax = float.Parse(accelerationMax);
-            CLM.Filter();
-            return View("Index", CLM);
-        }
+            if(!string.IsNullOrEmpty(variables["allElectric"])) { CLM.showElectric = true; }
+            else { CLM.showElectric = false; }
 
-        public ActionResult HandleFilterButton(String button)
-        {
-            int action = Int32.Parse(button);
-            switch(action)
+            if (!string.IsNullOrEmpty(variables["hybrid"])) { CLM.showHybrid = true; }
+            else { CLM.showHybrid = false; }
+
+            foreach(string brand in CLM.GetBrandsList())
             {
-                case 1:
-                    CLM.Filter();
-                    break;
-                case 2:
-                    CLM.ResetFilter();
-                    break;
+                if (!string.IsNullOrEmpty(variables[brand])) 
+                { 
+                    CLM.specifiedBrands.Add(brand); 
+                }
             }
+
+            for (int i = 1; i <= 9; i++)
+            {
+                string st =  i.ToString();
+                if (!string.IsNullOrEmpty(variables["seats " + st]))
+                {
+                    CLM.specifiedSeats.Add(st);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(variables["rangeMin"])) { CLM.rangeMin = int.Parse(variables["rangeMin"]); }
+            else { CLM.rangeMin = -1; }
+
+            if (!string.IsNullOrEmpty(variables["rangeMax"])) { CLM.rangeMax = int.Parse(variables["rangeMax"]); }
+            else { CLM.rangeMax = -1; }
+
+            if (!string.IsNullOrEmpty(variables["yearMin"])) { CLM.yearMin = int.Parse(variables["yearMin"]); }
+            else { CLM.yearMin = -1; }
+
+            if (!string.IsNullOrEmpty(variables["yearMax"])) { CLM.yearMax = int.Parse(variables["yearMax"]); }
+            else { CLM.yearMax = -1; }
+
+            if (!string.IsNullOrEmpty(variables["acceleration"])) { CLM.accelerationMax = int.Parse(variables["acceleration"]); }
+            else { CLM.accelerationMax = -1; }
+
+
+            
+
+            if (!string.IsNullOrEmpty(variables["button"]))
+            {
+                if (variables["button"].Equals("filter")) { CLM.Filter(); }
+                if (variables["button"].Equals("reset")) { CLM.ResetFilter(); }
+            }
+            
             return View("Index", CLM);
         }
-
     }
 }

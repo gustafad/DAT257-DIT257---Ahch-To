@@ -57,6 +57,17 @@ namespace CarCompare.Models
             return FilteredList.ToList();
         }
 
+        public List<string> GetBrandsList()
+        {
+            List<string> BrandsList = new List<string>();
+            foreach(string brand in FilteredList.Select(brand => brand.Brand).Distinct())
+            {
+                BrandsList.Add(brand);
+            }
+
+            return BrandsList.OrderBy(q => q).ToList();
+        }
+
         //Filter current list after all modified filter variables
         public void Filter()
         {
@@ -177,7 +188,7 @@ namespace CarCompare.Models
         //Sets default filter variables
         private void setDefaultFilter()
         {
-            showElectric = false;
+            showElectric = true;
             showHybrid = true;
 
             accelerationMin = -1;
