@@ -1,0 +1,31 @@
+What do I want to learn or understand better?
+The Git workflow is better every time. I have learnt which files are needed for a 
+successful merge. This week I finalized the filtering function for the result list, 
+and it was all done in C#, which, as I hoped, expanded my confidence in the language. 
+At the end of the sprint the filtering function had to be connected to the actual 
+buttons on the webpage, which was a lot harder, since it had to be done in Html.(A).
+Html is still a weak point of mine and is the area where i would still like to expand 
+my knoweledge (B). Next sprint I will try to work out the kinks that are still present 
+in the sorting of the list, and connect this to the Html frontpage, further developing 
+my understanding of the process(A->B)
+
+How can I help someone else, or the entire team, to learn something new?
+It’s getting hard to figure out something that I can teach the team, since it’s been 
+quite a few weeks now, and we’ve already shared so many insights with eachother. Still 
+I’m hoping that my structuring of the code is of benefit to the whole team. (A) 
+Hopefully next weeks user story will allow me to find new solutions that i can tell the 
+others (B) We will see what I get to take on next week. (A->B)
+
+What is my contribution towards the team’s use of Scrum?
+This week I was scrum master. I tried to make sure that everyone got to express their 
+needs and make their wishes heard. Going through the necessary points for each meeting. 
+I feel it worked well. It wasn't a hard assignment since all team members are very good 
+at team working(A). I now have a really hard time figuring out anything new to add here, 
+since it’s all going very smooth (B).(A->B). 
+
+What is my contribution towards the team’s deliveries?
+I completed the filtering function of the homepage. The user is now able to filter on 
+multiple variables at the same time, such as brands, acceleration, available seats and so on.(A). 
+One thing that is still lacking for the MVP is the sorting of the results. It is sorted 
+by Co2 emissions as a standard, but this should be expanded to more sorting choices next 
+week(B). I will try to take on this functionality for next week!(A->B)
