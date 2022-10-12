@@ -25,6 +25,8 @@ namespace CarCompare.Models
         public List<String> specifiedBrands = new List<string>();
         public List<String> specifiedSeats = new List<string>();
 
+        //Number of cars to be shown
+        public int numberOfShownCars = 25;
 
 
         //--Constructor--

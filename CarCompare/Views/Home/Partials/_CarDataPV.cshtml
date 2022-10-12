@@ -8,7 +8,7 @@
     int i = 0;
     int k = 0;
     <div class="table-count">
-        @foreach (var vehicle in Model.GetArray().Take(50))
+        @foreach (var vehicle in Model.GetArray().Take(Model.numberOfShownCars))
         {
             <div class="row table-bordered" id="table-entry" style="margin:.1vw">
                 <div class="col-md-3">
@@ -139,6 +139,8 @@
             font-family: inherit;
             margin-top: 65px;
         }
+
+            
 
             button.learn-more {
                 width: 18rem;
