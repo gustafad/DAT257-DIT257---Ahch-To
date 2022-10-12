@@ -12,7 +12,7 @@
 {
     // --------------- button and result info ------------
     <p class="showingXresults">
-        Showing 50 of @Model.GetArray().Length results:
+        Showing 50 of @Model.GetArray().Length results. Sorted by: @Model.sortedByToText()
     </p>
 
     //----------------- Filter buttons ----------------------
@@ -75,7 +75,7 @@
     //----------------- Acceleration ----------------------
     <div class="dropdown">
         <input type="checkbox" id="checkbox-acceleration">
-        <label class="dropdown-text buttonF2 buttonF" for="checkbox-acceleration">Acceleration   <br />0-100km/h</label>
+        <label class="dropdown-text buttonF2 buttonF" for="checkbox-acceleration">Acceleration<br />0-100km/h</label>
         <ul class="dropdown-ul">
             @for (int i = 1; i < 16; i++)
             {

@@ -3,19 +3,19 @@
     <!--Link to stylesheet-->
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 </head>
-@{
 
+@using (Html.BeginForm("SortingField", "Home", FormMethod.Post))
+{
     <div class="field sortingF">
         <text style="color: white"> Sort by: </text>
-        <select>
-            <option value="Co2">Co2</option>
-            <option value="YearOfManufacture">Year of manufacture</option>
-            <option value="AllElectricRange">All electric range</option>
-            <option value="Accelaration">Acceleration</option>
+        <select onchange="this.form.submit()" name="sorting">
+            <option>Please select</option>
+            <option value="co2">Co2</option>
+            <option value="yearstart">Year of manufacture</option>
+            <option value="allElectricRange">All electric range</option>
+            <option value="acceleration">Acceleration</option>
         </select>
     </div>
-
-
 }
 
 <style>
@@ -27,5 +27,4 @@
         padding-inline: 0vw;
         padding-block: 0vw;
     }
-
 </style>
