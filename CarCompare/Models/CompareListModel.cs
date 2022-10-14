@@ -200,11 +200,11 @@ namespace CarCompare.Models
         //.ThenBy(vehicle => vehicle.GetModification("co2"))
 
         //Boolean functions determining if filter variables has been modified/specified
-        private Boolean brandsSpecified() { return specifiedBrands.Count != 0; }
-        private Boolean seatsSpecified() { return specifiedSeats.Count != 0; }
-        private Boolean accelerationModified() { return accelerationMax != -1 || accelerationMin != -1; }
-        private Boolean yearModified() { return yearMax != -1 || yearMin != -1; }
-        private Boolean rangeModified() { return rangeMax != -1 || rangeMin != -1; }
+        public Boolean brandsSpecified() { return specifiedBrands.Count != 0; }
+        public Boolean seatsSpecified() { return specifiedSeats.Count != 0; }
+        public Boolean accelerationModified() { return accelerationMax != -1 || accelerationMin != -1; }
+        public Boolean yearModified() { return yearMax != -1 || yearMin != -1; }
+        public Boolean rangeModified() { return rangeMax != -1 || rangeMin != -1; }
 
         //Sets default filter variables
         private void setDefaultFilter()

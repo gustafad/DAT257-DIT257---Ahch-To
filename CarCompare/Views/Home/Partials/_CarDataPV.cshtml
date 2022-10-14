@@ -23,11 +23,21 @@
 
                     @if (vehicle.isAllElectric())
                     {
-                        <p>This car is all electric, no co2 emission!! :D</p>
+                    <p>This car is all electric, no co2 emission!! :D</p>
                     }
                     else
                     {
-                        <p>Co2 emission: @vehicle.GetModification("co2")</p>
+                    <p>Co2 emission: @vehicle.GetModification("co2")</p>
+                    }
+                    @*Check and supplement filter/sorting variables*@
+                    @if (Model.accelerationModified() || Model.sortedBy == "acceleration"){
+                    <p style="color:white">Acceleration 0-100 km/h: @(vehicle.GetModification("acceleration")) s</p>
+                    }
+                    @if (Model.rangeModified() || Model.sortedBy == "allElectricRange"){
+                    <p style="color:white">All electric range: @(vehicle.GetModification("allElectricRange")) km</p>
+                    }
+                    @if (Model.seatsSpecified() || Model.sortedBy == "places"){
+                    <p style="color:white">Number of seats: @(vehicle.GetModification("places"))</p>
                     }
 
                 </div>
