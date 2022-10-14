@@ -15,6 +15,7 @@ namespace CarCompare.Controllers
         //Static CompareListModel creation
         static CompareListModel CLM = new CompareListModel();
 
+
         //Index page (Home page) 
         public ActionResult Index()
         {
@@ -62,30 +63,39 @@ namespace CarCompare.Controllers
             }
 
             if (!string.IsNullOrEmpty(variables["rangeMin"])) { CLM.rangeMin = int.Parse(variables["rangeMin"]); }
-            else { CLM.rangeMin = -1; }
 
             if (!string.IsNullOrEmpty(variables["rangeMax"])) { CLM.rangeMax = int.Parse(variables["rangeMax"]); }
-            else { CLM.rangeMax = -1; }
 
             if (!string.IsNullOrEmpty(variables["yearMin"])) { CLM.yearMin = int.Parse(variables["yearMin"]); }
-            else { CLM.yearMin = -1; }
 
             if (!string.IsNullOrEmpty(variables["yearMax"])) { CLM.yearMax = int.Parse(variables["yearMax"]); }
-            else { CLM.yearMax = -1; }
 
             if (!string.IsNullOrEmpty(variables["acceleration"])) { CLM.accelerationMax = int.Parse(variables["acceleration"]); }
-            else { CLM.accelerationMax = -1; }
-
-
-            
 
             if (!string.IsNullOrEmpty(variables["button"]))
             {
                 if (variables["button"].Equals("filter")) { CLM.Filter(); }
                 if (variables["button"].Equals("reset")) { CLM.ResetFilter(); }
             }
-            
+
             return View("Index", CLM);
         }
+
+        [HttpPost]
+        public ActionResult SortingField(FormCollection variables)
+        {
+            if (!string.IsNullOrEmpty(variables["sorting"]))
+            {
+                String selectedSorting = variables["sorting"];
+
+                if (selectedSorting.Equals(CLM.sortedBy)) { CLM.ascending = !CLM.ascending; }
+                else if(selectedSorting.Equals("yearstart") || selectedSorting.Equals("allElectricRange")) { CLM.ascending = false; }
+                else { CLM.ascending = true; }
+                CLM.sortedBy = selectedSorting;
+                CLM.Sort();
+            }
+            return View("Index", CLM);
+        }
+
     }
 }

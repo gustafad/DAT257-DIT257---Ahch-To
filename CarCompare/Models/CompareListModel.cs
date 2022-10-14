@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using CarCompare.Models;
 
 namespace CarCompare.Models
@@ -24,6 +25,8 @@ namespace CarCompare.Models
         public float accelerationMin, accelerationMax, yearMin, yearMax, rangeMin, rangeMax;
         public List<String> specifiedBrands = new List<string>();
         public List<String> specifiedSeats = new List<string>();
+        public String sortedBy;
+        public Boolean ascending;
 
 
 
@@ -35,7 +38,9 @@ namespace CarCompare.Models
 
             //Initializes SortedList and sorts it by Co2 emission
             SortedList = VehicleList.Get();
-            Sort("co2", true);
+            sortedBy = "co2";
+            ascending = true;
+            Sort();
 
             //Sets the default filter variables
             setDefaultFilter();
@@ -74,7 +79,7 @@ namespace CarCompare.Models
             List<Vehicle> filteredList = new List<Vehicle>();
 
             //Loops through all vehicles
-            foreach (Vehicle vehicle in SortedList)
+            foreach (Vehicle vehicle in this.SortedList)
             {
 
                 //Filters depending on ShowElectric/showHybrid variable
@@ -153,30 +158,44 @@ namespace CarCompare.Models
             Filter();
         }
 
+        public String sortedByToText()
+        {
+            String sortedText = "";
+            String ascendingText;
+            if(this.sortedBy.Equals("co2")) { sortedText = "Co2 emissions,"; }
+            if (this.sortedBy.Equals("yearstart")) { sortedText = "Year of manufacture"; }
+            if (this.sortedBy.Equals("allElectricRange")) { sortedText = "All electric range"; }
+            if (this.sortedBy.Equals("acceleration")) { sortedText = "Acceleration"; }
+
+            if(this.ascending) { ascendingText = " in ascending order."; }
+            else { ascendingText = " in descending order."; }
+
+            return sortedText + ascendingText;
+        }
+
 
         //--PRIVATE METHODS--
 
 
 
         //Sorts list by Modification variabla. Ascending/Descending set through 'Ascending' boolean parameter.
-        public void Sort(String Modification, Boolean Ascending)
+        public void Sort()
         {
-            if (Modification == "co2")
+            if (this.sortedBy == "co2")
             {
-                if (Ascending) { this.SortedList = this.SortedList.OrderBy(vehicle => vehicle.GetModification("co2")).ToList(); }
-                else { this.SortedList = this.SortedList.OrderByDescending(vehicle => vehicle.GetModification("co2")).ToList(); }
+                if (this.ascending) { this.SortedList = this.SortedList.OrderBy(vehicle => vehicle.GetSortVar("co2")).ToList(); }
+                else { this.SortedList = this.SortedList.OrderByDescending(vehicle => vehicle.GetSortVar("co2")).ToList(); }
             }
             else
             {
-                if (Ascending)
-                {
-                    this.SortedList = this.SortedList.OrderBy(vehicle => vehicle.GetModification("Modification")).ToList();
-                }
-                else { this.SortedList = this.SortedList.OrderByDescending(vehicle => vehicle.GetModification("Modification")).ThenBy(vehicle => vehicle.GetModification("co2")).ToList(); }
+                if (this.ascending) { this.SortedList = this.SortedList.OrderBy(vehicle => vehicle.GetSortVar(this.sortedBy)).ToList(); }
+                else { this.SortedList = this.SortedList.OrderByDescending(vehicle => vehicle.GetSortVar(this.sortedBy)).ToList(); }
             }
 
             Filter();
         }
+
+        //.ThenBy(vehicle => vehicle.GetModification("co2"))
 
         //Boolean functions determining if filter variables has been modified/specified
         private Boolean brandsSpecified() { return specifiedBrands.Count != 0; }

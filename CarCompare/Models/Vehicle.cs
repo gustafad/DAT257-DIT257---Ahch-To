@@ -50,6 +50,19 @@ namespace CarCompare.Models
             return comp;
         }
 
+        public float GetSortVar(String mod)
+        {
+            String substring = GetModification(mod);
+            if( substring.Equals("Not Found") && (mod.Equals("co2") || mod.Equals("acceleration")) ) { return 2000; }
+            if (substring.Equals("Not Found") && mod.Equals("allElectricRange")) { return 0; }
+
+            substring = substring.Split('-', '.')[0];
+            float result = -1;
+            if (float.TryParse(substring, out result)) { return result; }
+            return result;
+
+        }
+
         public Boolean isAllElectric()
         {
             return this.GetModification("co2") == "0" && this.GetModification("fuelConsumptionCombined") == "Not Found";
