@@ -3,6 +3,7 @@ using CarCompare.Services;
 using CarCompare.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -71,6 +72,12 @@ namespace CarCompare.Controllers
             if (!string.IsNullOrEmpty(variables["yearMax"])) { CLM.yearMax = int.Parse(variables["yearMax"]); }
 
             if (!string.IsNullOrEmpty(variables["acceleration"])) { CLM.accelerationMax = int.Parse(variables["acceleration"]); }
+
+
+            if (!string.IsNullOrEmpty(variables["numberOfShownCars"])) { CLM.numberOfShownCars = int.Parse(variables["numberOfShownCars"]); }
+            else { CLM.numberOfShownCars = (CLM.GetArray().Length < 25) ? CLM.GetArray().Length : 25; }
+
+            
 
             if (!string.IsNullOrEmpty(variables["button"]))
             {

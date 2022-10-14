@@ -28,6 +28,8 @@ namespace CarCompare.Models
         public String sortedBy;
         public Boolean ascending;
 
+        //Number of cars to be shown
+        public int numberOfShownCars = 25;
 
 
         //--Constructor--

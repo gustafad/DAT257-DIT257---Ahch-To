@@ -12,7 +12,15 @@
 {
     // --------------- button and result info ------------
     <p class="showingXresults">
-        Showing 50 of @Model.GetArray().Length results. Sorted by: @Model.sortedByToText()
+        Showing 
+        <input 
+               type="number" 
+               id="numberOfShownCars"  
+               name="numberOfShownCars"
+               placeholder=@((Model.GetArray().Length < 25) ? Model.GetArray().Length : Model.numberOfShownCars) 
+               min="1"
+               max=@Model.GetArray().Length> 
+        of @Model.GetArray().Length results: Sorted by: @Model.sortedByToText()
     </p>
 
     //----------------- Filter buttons ----------------------
