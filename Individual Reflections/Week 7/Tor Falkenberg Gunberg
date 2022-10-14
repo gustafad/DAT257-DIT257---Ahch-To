@@ -1,0 +1,29 @@
+What do I want to learn or understand better?
+This week I did get to work a little with the Html part of the coding. Though a lot of the 
+functionality is bound within the structure of the ASP.NET framework we are using for our 
+application. I managed to implement the functionality I needed, after a lot of struggling. 
+To be honest it’s a very messy structure and I hope to find better alternatives for future 
+projects(A). As we are getting closer to the end of the project I wish to revisit all the 
+information about Agile team working that we have gotten the last few weeks, to understand 
+it even better (B). Next week i will revisit the course information and literature.(A->B)
+
+How can I help someone else, or the entire team, to learn something new?
+The last few sprints I have been working a lot with the ‘CompareListModel’, the model class 
+of our project. I am quite proud of the stability and clear structure of the class. I hope 
+that this gives my teammates some hints they didn’t already know. (A) I could try to share 
+my insights in passing values from view to model with the team (B). Next week we will iron 
+out kinks that has to do with this and more. (A->B)
+
+What is my contribution towards the team’s use of Scrum?
+Being present and active during all meetings of the week is helping to focus and propel the 
+team. In the Friday meeting I helped out with updating the GIT repository in a good way. We 
+are all helping each other to write the team reflections.(A). Next week I will refresh my 
+knowledge about Scrum and share it with the team. (B)(A->B). 
+
+What is my contribution towards the team’s deliveries?
+I completed the sorting function and even made it better than expected. Sorting information 
+is now written out for easier use, and the possibility to sort by both ascending and descending 
+order was implemented. Also of course the sorting function itself was redeveloped, improved 
+and implemented(A). Next week we will widen the scope of the project just a little bit, to 
+make it even better. All the basic functionality is there, but still some things could work even 
+better(B) We will discuss the most important modifications in next weeks Monday meeting(A->B)
