@@ -22,16 +22,17 @@ namespace CarCompare.Controllers
         {
             return View("Index", CLM);
         }
-
+        //About page
         public ActionResult About()
         {
             return View();
         }
-
+        //Incase there is a 404 error
         public ActionResult Error404()
         {
             return View();
         }
+        //Incase there is a 500 error
         public ActionResult Error500()
         {
             return View();

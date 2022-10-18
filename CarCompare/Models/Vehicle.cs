@@ -25,6 +25,7 @@ namespace CarCompare.Models
             ModificationDictionary = modificationDictionary;
         }
 
+        //returns the modification value of a vehicle given input
         public string GetModification(string mod)
         {
             string output;
@@ -37,6 +38,7 @@ namespace CarCompare.Models
             return "Not Found";
         }
 
+        //Returns values that are parsed as floats to be compared
         public float GetComp(String mod)
         {
             float comp = -1;
@@ -50,6 +52,7 @@ namespace CarCompare.Models
             return comp;
         }
 
+        //Returns the sorting variable
         public float GetSortVar(String mod)
         {
             String substring = GetModification(mod);
@@ -62,12 +65,13 @@ namespace CarCompare.Models
             return result;
 
         }
-
+        //Returns whether or not the car is all electric, this is a special case since not all have c02 data
         public Boolean isAllElectric()
         {
             return this.GetModification("co2") == "0" && this.GetModification("fuelConsumptionCombined") == "Not Found";
         }
 
+        //Returns the url that (learn more) button should redirect the user to
         public string GetSearchURL()
         {
             return ("https://www.google.com/search?q=" + this.Brand + "+" + this.Generation + "+" + this.GetModification("yearstart"));
