@@ -2,10 +2,10 @@
 DAT257 / DIT257 Agile software project management - Ahch-To Group Repo
 
 Name - Github Name
-Christoffer Persson - ChristofferPerssons
-Ebu Bekir Simsek - EbubekirSimsek
-Adam Tafvelin - gustafad
-Tor Falkenberg Gunberg - Pyyret
+- Christoffer Persson - ChristofferPerssons
+- Ebu Bekir Simsek - EbubekirSimsek
+- Adam Tafvelin - gustafad
+- Tor Falkenberg Gunberg - Pyyret
 
 ## Gitinspector
 Could not find a way to make gitinspector work and as such we refer to the insights page of the github page where you will find information regarding productivity.
