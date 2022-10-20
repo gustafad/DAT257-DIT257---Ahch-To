@@ -7,12 +7,12 @@ Ebu Bekir Simsek - EbubekirSimsek
 Adam Tafvelin - gustafad
 Tor Falkenberg Gunberg - Pyyret
 
-##Gitinspector
+## Gitinspector
 Could not find a way to make gitinspector work and as such we refer to the insights page of the github page where you will find information regarding productivity.
 We would however like to state that all members have paticipated and provided value during the project with no exceptions. Adam and Ebu have conducted pair programming
 for most of the course so this should be kept in mind. Christoffer and Tors lines of added code being so high is due to errors we made when working with Github and pushing initial commits.
 
-##Structure:
+## Structure:
   - Install and execute guide in VisualStudio2019_Installation_Instructions.pdf
   
   - Final report as a loose file
@@ -29,7 +29,7 @@ for most of the course so this should be kept in mind. Christoffer and Tors line
       -Modified files in Carcompare: Controllers/Homecontroller.cs, Content/Site.css, Content/images folder, 
         Models folder, Services/CarDataService.cs and Views Folder. Database for vehicles in data.xml as loose file
       
-##Trello: https://trello.com/invite/b/7mEv5mCL/ATTId5b09d965385a6988669493ab0a0fd92A3CBD0CC/carcompare-agil
+## Trello: https://trello.com/invite/b/7mEv5mCL/ATTId5b09d965385a6988669493ab0a0fd92A3CBD0CC/carcompare-agil
   - First column: User stories proposed by PO, team members or Stakeholder (through PO)
   - Second column: User stories discussed and approved by team and PO user stories
   - Third column: Sprint backlog
