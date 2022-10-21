@@ -15,6 +15,7 @@ namespace CarCompare.Models
         public string Image;
         public Dictionary<string, string> ModificationDictionary;
 
+        //Constructor
         public Vehicle(string brand, string model, string generation, string modelYear, Dictionary<string, string> modificationDictionary, string image)
         {
             Brand = brand;
@@ -25,7 +26,7 @@ namespace CarCompare.Models
             ModificationDictionary = modificationDictionary;
         }
 
-        //returns the modification value of a vehicle given input
+        //Returns the modification value of a vehicle given input
         public string GetModification(string mod)
         {
             string output;

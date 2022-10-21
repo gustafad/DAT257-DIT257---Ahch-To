@@ -12,7 +12,7 @@ namespace CarCompare.Models
     //Vehicle model and the VehicleList model are in separate classes.
     public class CompareListModel
     {
-        //--Private variables--
+        //--Local variables--
 
         //VehicleList model
         private static VehicleList VehicleList;
@@ -25,6 +25,8 @@ namespace CarCompare.Models
         public float accelerationMin, accelerationMax, yearMin, yearMax, rangeMin, rangeMax;
         public List<String> specifiedBrands = new List<string>();
         public List<String> specifiedSeats = new List<string>();
+
+        //Sorting variables
         public String sortedBy;
         public Boolean ascending;
 
@@ -53,17 +55,19 @@ namespace CarCompare.Models
 
         //--PUBLIC METHODS--
 
-        //Get the VehicleArray
+        //Get the Vehicle array
         public Vehicle[] GetArray()
         {
             return FilteredList.ToArray();
         }
 
+        //Get the Vehicle list
         public List<Vehicle> GetList()
         {
             return FilteredList.ToList();
         }
 
+        //Get a list of all brands in the current FilteredList
         public List<string> GetBrandsList()
         {
             List<string> BrandsList = new List<string>();
@@ -160,6 +164,7 @@ namespace CarCompare.Models
             Filter();
         }
 
+        //Returns a string containing information about how the list is sorted.
         public String sortedByToText()
         {
             String sortedText = "";
@@ -175,12 +180,7 @@ namespace CarCompare.Models
             return sortedText + ascendingText;
         }
 
-
-        //--PRIVATE METHODS--
-
-
-
-        //Sorts list by Modification variabla. Ascending/Descending set through 'Ascending' boolean parameter.
+        //Sorts list dependant on local variables 'sortedBy' and 'ascending'.
         public void Sort()
         {
             if (this.sortedBy == "co2")
@@ -196,8 +196,6 @@ namespace CarCompare.Models
 
             Filter();
         }
-
-        //.ThenBy(vehicle => vehicle.GetModification("co2"))
 
         //Boolean functions determining if filter variables has been modified/specified
         public Boolean brandsSpecified() { return specifiedBrands.Count != 0; }
@@ -221,12 +219,6 @@ namespace CarCompare.Models
 
             specifiedBrands.Clear();
             specifiedSeats.Clear();
-
-            //--TESTCODE--
-            //specifiedBrands.Add("Jeep");
-            //specifiedSeats.Add("7");
         }
     }
-
-
 }
