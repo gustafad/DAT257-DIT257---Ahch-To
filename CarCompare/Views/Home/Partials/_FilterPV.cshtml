@@ -2,12 +2,9 @@
 <head>
     <!--Link to stylesheet-->
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-
-
-
 </head>
 
-
+@*This handles our filter options and how they look, the structure of them*@
 @using (Html.BeginForm("FilterField", "Home", FormMethod.Post))
 {
     // --------------- button and result info ------------
@@ -273,23 +270,6 @@
                 color: green;
             }
 
-
-
-    /**
-
-        By using the Following-sibling selector (~),
-        we can target elements positioned after our checkbox in the DOM tree.
-
-        With the state pseudo selector (:checked),
-        we can make changes depending on the state of the checkbox.
-
-        Using this combination of selectors
-        allows to change the color of the label
-        and show the list of items
-        only when the checkbox is checked.
-
-    */
-
     input[type=checkbox]:checked ~ label {
         background-color: black;
     }
@@ -301,61 +281,60 @@
     @*------------------ SLIDER AND BUTTON ----------------*@
 
     .allElectric {
-        display: flex;
-        font-display:;
+        color: black;
         font-size: 20px;
         font-weight: 200;
-        color: black;
+        display: flex;
+        font-display:;
         font-weight: 500;
     }
 
     .hybrid {
-        display: flex;
-        font-display:;
-        font-size: 20px;
+        font-weight: 500;
         font-weight: 200;
         color: black;
-        font-weight: 500;
+        font-size: 20px;
+        display: flex;
     }
 
-    /* The switch - the box around the slider */
+    
     .switch {
-        font-size: 15px;
-        position: relative;
+        margin-left: 20px;
         display: inline-block;
         width: 3.5em;
+        position: relative;
+        font-size: 15px;
         height: 1.5em;
-        margin-left: 20px;
     }
-        /* Hide default HTML checkbox */
+
         .switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-    /* The slider */
+
     .slider {
-        position: absolute;
-        cursor: pointer;
         top: 0;
-        left: 0;
         right: 0;
         bottom: 0;
-        background-color: #ccc;
-        transition: .4s;
+        left: 0;
+        position: absolute;
+        cursor: pointer;
         border-radius: 1rem 0rem 1rem;
+        transition: .4s;
+        background-color: #ccc;
     }
 
         .slider:before {
-            position: absolute;
-            content: "";
             height: 1.5em;
-            width: 1.4em;
             left: 0em;
-            bottom: 0em;
+            content: "";
+            position: absolute;
+            border-radius: 1rem 0rem 1rem;
+            width: 1.4em;
             background-color: white;
             transition: .4s;
-            border-radius: 1rem 0rem 1rem;
+            bottom: 0em;
             border: 3px solid white;
         }
 
@@ -369,44 +348,44 @@
 
     input:checked + .slider:before {
         transform: translateX(2.2em);
-        background-color: green;
         box-shadow: 0px 0px 40px 5px #72eb67;
         border: 3px solid white;
+        background-color: green;
     }
 
     input:checked + .slider::after {
+        position: absolute;
         content: "|";
         color: white;
-        position: absolute;
-        right: 0.3rem;
         transform: rotate(45deg);
+        right: 0.3rem;
     }
 
-    /*Filter and Reset button*/
+
     .buttonF {
-        padding: 0.25vw 2vw 0.25vw;
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 2.5px;
-        font-weight: 400;
-        color: white;
-        background: #282936;
-        border-radius: 0.3vw;
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease 0s;
         position: center;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 2.5px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        color: white;
+        font-weight: 400;
+        transition: all 0.3s ease 0s;
+        padding: 0.25vw 2vw 0.25vw;
+        border-radius: 0.3vw;
+        background: #282936;
     }
 
         .buttonF:hover, button:active {
-            -webkit-transform: translate(0px,5px);
             -ms-transform: translate(0px,5px);
             transform: translate(0px,5px);
             border-bottom: 1px solid #2ecc71;
+            -webkit-transform: translate(0px,5px);
         }
         .buttonF2:hover, button:active {
-            -webkit-transform: translate(0px,-5px);
             -ms-transform: translate(0px,-5px);
             transform: translate(0px,-5px);
+            -webkit-transform: translate(0px,-5px);
         }
 </style>
 
